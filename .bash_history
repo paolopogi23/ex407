@@ -1235,3 +1235,23 @@ ls -alrt
 git commit -a -m "Initial commit"
 git add .
 git status
+git push origin master
+git checkout -b testbranch
+id ansible
+pwd
+ls -alrt
+sudo git checkout -b testbranch
+pwd
+ls -alrt
+git status
+pwd
+ls -alrt
+cd plays/
+ls -alrt
+cd lisenet/
+ls -alrt
+vim test.txt
+git status
+git add test.txt
+sudo git add test.txt
+git status
