@@ -1,2 +1,0 @@
-logrotate state -- version 2
-"/var/log/awslogs.log" 2017-1-5-16:0:0

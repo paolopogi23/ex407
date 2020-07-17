@@ -11,12 +11,12 @@
 
 - name: Allow FW rules
   firewalld:
-    service: "{{ item }}"
+    port:
     permanent: yes
     state: enabled
   with_items:
-    - http
-    - https
+    - 80/tcp
+    - 443/tcp
   notify: restart fw
 
 - name: Copy template to /var/www/html

@@ -1235,3 +1235,160 @@ ls -alrt
 git commit -a -m "Initial commit"
 git add .
 git status
+cd plays/
+ls -alrt
+cd lisenet/
+ls -lart
+ansible-playbook task10-apache.yml
+vi inventory 
+vi ansible.cfg 
+ansible-playbook task10-apache.yml
+vi task10-apache.yml
+chmod 755 inventory 
+ls -alrt
+chmod 755 *.yml
+ls -alrt
+ansible-playbook task10-apache.yml
+chmod 755 ansible.cfg
+ansible-playbook task10-apache.yml
+pwd
+cd ..
+chmod 755 lisenet/
+cd lisenet/
+ansible-playbook task10-apache.yml
+ls -alrt
+chmod 744 vault_key
+ls -alrt
+ansible-playbook task10-apache.yml
+cat vault_key
+cat /home/ansible/plays/lisenet/vault_key
+chmod 644 /home/ansible/plays/lisenet/vault_key
+cat vault_key
+ansible-playbook task10-apache.yml
+vi inventory 
+ansible-playbook task10-apache.yml
+ansible all -m ping
+ansible-playbook task10-apache.yml
+pwd
+ls -alrt
+vi task10-apache.yml
+cd roles/
+ls -alrt
+chmod 755 *
+ls -alrt
+cd sample-apache
+ls -alrt
+pwd
+cd ..
+chmod -R 755 *
+cd -
+;ls -alrt
+ls -alrt
+cd tasks/
+vi main.yml 
+pwd
+cd ..
+pwd
+cd ..
+ansible-playbook task10-apache.yml
+ls -lart
+pwd
+cd ..
+ls -alrt
+cat lab2-httpd-firewall.yml
+ansible-playbook lab2-httpd-firewall.yml
+ansible-playbook lab2-httpd-firewall.yml -i inventory 
+cd ..
+sudo chmod 755 plays
+ls -alrt
+cd plays/
+ls -alrt
+chmod -R 755 *
+ls -lart
+cd lisenet/
+ls -alrt
+ansible-playbook task10-apache.yml
+chmod 644 vault_key 
+ansible-playbook task10-apache.yml
+sudo tailf /var/log/haproxy/haproxy.log 
+ls -art
+ls -alrt
+pwd
+ls -alrt
+df -h
+ansible-playbook task12-selinux.yml
+cat task5-users.yml
+ls -alt
+cat task9-mysql.yml
+cat /home/ansible/plays/lisenet/roles/sample-mysql/tasks/main.yml 
+ls -lqrt
+cat task3-motd.yml
+ansible-playbook task3-motd.yml
+ls -alrt
+cat task5-users.yml
+ls -lart
+pwd
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+sysctl -a | grep swap
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vim task13-sysctl.yml
+cat task13-sysctl.yml
+ls -lrt
+pwd
+cd ..
+ls -alrt
+grep block *
+grep -ri block *
+ls -alrt
+pwd
+grep -ri block | more
+grep -ri block *
+pwd
+ls -alrt
+grep block *.yml
+cd lisenet/
+grep block *.yml
+cd ..
+ls p-alrt
+cd lisenet/
+ls -alrt
+cat task13-sysctl.yml
+vi task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vi task13-sysctl.yml
+ansible-playbook task13-sysctl.yml
+vi task13-sysctl.yml
+ls -alrt
+ansible-playbook task13-sysctl.yml
+cat task13-sysctl.yml
+git status
+pwd
+cd ..
+ls -alrt
+rm -rf temp
+git status
+git rm temp
+git rm -r temp
+git status
+git add .
+git status
+pwd
+cd ..
+git add .
+git status
+pwd
+cd plays/
+git branch

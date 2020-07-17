@@ -1,8 +1,0 @@
-[Thu Jul 16 11:26:00.094182 2020] [core:notice] [pid 24482] SELinux policy enabled; httpd running as context system_u:system_r:httpd_t:s0
-[Thu Jul 16 11:26:00.096042 2020] [suexec:notice] [pid 24482] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
-[Thu Jul 16 11:26:00.107026 2020] [lbmethod_heartbeat:notice] [pid 24482] AH02282: No slotmem from mod_heartmonitor
-[Thu Jul 16 11:26:00.111825 2020] [mpm_prefork:notice] [pid 24482] AH00163: Apache/2.4.6 (CentOS) configured -- resuming normal operations
-[Thu Jul 16 11:26:00.111857 2020] [core:notice] [pid 24482] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
-[Thu Jul 16 11:28:16.440747 2020] [autoindex:error] [pid 24487] [client ::1:54222] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
-[Thu Jul 16 11:30:20.338118 2020] [autoindex:error] [pid 24486] [client ::1:54238] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
-[Thu Jul 16 11:30:49.688082 2020] [autoindex:error] [pid 24485] [client 63.33.71.240:41268] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive

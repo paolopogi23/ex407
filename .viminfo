@@ -26,40 +26,55 @@
 # Registers:
 "0	LINE	0
 	user_password: $6$mysecretsalt$3.1aQi8DodZ22ZCbgneUNwbK7zVVNRniMnT9X42QAciGg0vesJzHfS6bJHCxhyd4OcPDcuFDxnd0R6KHw9sDr/
-""1	LINE	0
-		helper = store
+"1	LINE	0
+	    rescue:
 "2	LINE	0
-	[credential]
+	        ansible_memtotal_mb | int > 1024
 "3	LINE	0
-	  tasks:
+	    rescue:
 "4	LINE	0
-	  
+	    - name: Print Less than
 "5	LINE	0
-	oo
+	    service: "{{ item }}"
 "6	LINE	0
-	  selinux:
+		helper = store
 "7	LINE	0
-	- hostdd
+	[credential]
 "8	LINE	0
-	# tasks file for rhel_system
+	  tasks:
 "9	LINE	0
-	    - lb.yml
-"-	CHAR	0
-	t
+	  
+""-	CHAR	0
+	8
 
 # File marks:
-'0  8  1  ~/.git/config
-'1  7  42  ~/.git/config
-'2  1  5  ~/.git/config
-'3  5  11  ~/plays/lisenet/task12-selinux.yml
-'4  5  16  ~/plays/lisenet/selinux.yml
-'5  6  0  ~/plays/lisenet/roles/rhel_system/tasks/main.yml
-'6  24  1  ~/plays/lisenet/roles/geerlingguy.haproxy/defaults/main.yml
-'7  27  0  ~/plays/lisenet/roles/geerlingguy.haproxy/defaults/main.yml
-'8  1  0  ~/plays/lisenet/roles/geerlingguy.haproxy/defaults/main.yml
-'9  14  0  ~/plays/lisenet/roles/geerlingguy.haproxy/defaults/main.yml
+'0  14  41  ~/plays/lisenet/task13-sysctl.yml
+'1  11  4  ~/plays/lisenet/task13-sysctl.yml
+'2  2  12  ~/plays/lisenet/task13-sysctl.yml
+'3  12  4  ~/plays/lisenet/task13-sysctl.yml
+'4  10  21  ~/plays/lisenet/task13-sysctl.yml
+'5  12  9  ~/plays/lisenet/task13-sysctl.yml
+'6  19  12  ~/plays/lisenet/roles/sample-apache/tasks/main.yml
+'7  3  2  ~/plays/lisenet/task10-apache.yml
+'8  9  42  ~/plays/lisenet/inventory
+'9  6  0  ~/plays/lisenet/ansible.cfg
 
 # Jumplist (newest first):
+-'  14  41  ~/plays/lisenet/task13-sysctl.yml
+-'  11  6  ~/plays/lisenet/task13-sysctl.yml
+-'  2  0  ~/plays/lisenet/task13-sysctl.yml
+-'  12  4  ~/plays/lisenet/task13-sysctl.yml
+-'  10  8  ~/plays/lisenet/task13-sysctl.yml
+-'  1  0  ~/plays/lisenet/task13-sysctl.yml
+-'  19  12  ~/plays/lisenet/roles/sample-apache/tasks/main.yml
+-'  7  2  ~/plays/lisenet/roles/sample-apache/tasks/main.yml
+-'  3  2  ~/plays/lisenet/task10-apache.yml
+-'  9  42  ~/plays/lisenet/inventory
+-'  6  0  ~/plays/lisenet/inventory
+-'  2  0  ~/plays/lisenet/task10-apache.yml
+-'  6  0  ~/plays/lisenet/ansible.cfg
+-'  3  0  ~/plays/lisenet/ansible.cfg
+-'  15  0  ~/plays/lisenet/inventory
 -'  8  1  ~/.git/config
 -'  7  1  ~/.git/config
 -'  1  0  ~/.git/config
@@ -81,12 +96,8 @@
 -'  20  0  ~/plays/lisenet/roles/geerlingguy.haproxy/defaults/main.yml
 -'  5  4  ~/plays/lisenet/task11-haproxy.yml
 -'  1  0  ~/plays/lisenet/task11-haproxy.yml
--'  2  13  ~/plays/lisenet/task10-apache.yml
 -'  6  4  ~/plays/lisenet/task10-apache.yml
--'  15  0  ~/plays/lisenet/inventory
 -'  1  0  ~/plays/lisenet/inventory
--'  7  22  ~/plays/lisenet/roles/sample-apache/tasks/main.yml
--'  19  4  ~/plays/lisenet/roles/sample-apache/tasks/main.yml
 -'  5  2  ~/plays/lisenet/task10-apache.yml
 -'  21  0  ~/plays/lisenet/roles/sample-apache/tasks/main.yml
 -'  1  0  ~/plays/lisenet/task10-apache.yml
@@ -112,8 +123,6 @@
 -'  21  0  ~/plays/lisenet/roles/sample-mysql/tasks/main.yml
 -'  1  0  ~/plays/lisenet/roles/sample-mysql/handlers/main.yml
 -'  1  0  ~/plays/lisenet/roles/sample-mysql/tasks/main.yml
--'  3  0  ~/plays/lisenet/ansible.cfg
--'  6  0  ~/plays/lisenet/ansible.cfg
 -'  8  38  ~/plays/lisenet/task8-addrepo.yml
 -'  12  6  ~/plays/lisenet/task8-addrepo.yml
 -'  1  0  ~/plays/lisenet/task8-addrepo.yml
@@ -148,18 +157,75 @@
 -'  9  4  ~/plays/lisenet/task3-motd.yml
 -'  1  0  ~/plays/lisenet/task3-motd.yml
 -'  7  0  ~/plays/lisenet/ansible.cfg
--'  4  0  ~/plays/lisenet/adhoc.sh
--'  3  0  ~/plays/lisenet/adhoc.sh
--'  1  0  ~/plays/lisenet/adhoc.sh
--'  2  0  ~/plays/lisenet/ansible.cfg
--'  5  0  ~/plays/lisenet/ansible.cfg
--'  1  0  ~/plays/lisenet/ansible.cfg
--'  6  5  ~/plays/lab6-firewalld-enable.yml
--'  21  4  ~/plays/lab6-firewalld-enable.yml
--'  18  6  ~/plays/lab6-firewalld-enable.yml
--'  1  0  ~/plays/lab6-firewalld-enable.yml
 
 # History of marks within files (newest to oldest):
+
+> ~/plays/lisenet/task13-sysctl.yml
+	"	14	41
+	^	13	42
+	.	13	41
+	+	2	12
+	+	5	51
+	+	9	19
+	+	12	10
+	+	12	40
+	+	13	44
+	+	12	41
+	+	2	14
+	+	12	0
+	+	2	12
+	+	12	10
+	+	14	43
+	+	12	7
+	+	11	42
+	+	12	0
+	+	13	41
+
+> ~/plays/lisenet/roles/sample-apache/tasks/main.yml
+	"	19	12
+	^	19	13
+	.	19	12
+	+	27	0
+	+	27	16
+	+	27	0
+	+	26	22
+	+	20	19
+	+	15	24
+	+	19	10
+	+	4	22
+	+	10	22
+	+	7	22
+	+	15	0
+	+	14	8
+	+	18	11
+	+	19	12
+
+> ~/plays/lisenet/task10-apache.yml
+	"	3	2
+	^	2	14
+	.	2	13
+	+	6	63
+	+	5	0
+	+	3	13
+	+	6	6
+	+	2	13
+
+> ~/plays/lisenet/inventory
+	"	9	42
+	^	9	43
+	.	9	42
+	+	8	7
+	+	9	42
+
+> ~/plays/lisenet/ansible.cfg
+	"	6	0
+	^	6	57
+	.	6	56
+	+	3	44
+	+	5	8
+	+	2	0
+	+	7	0
+	+	6	56
 
 > ~/.git/config
 	"	8	1
@@ -259,34 +325,6 @@
 	+	6	0
 	+	1	24
 
-> ~/plays/lisenet/task10-apache.yml
-	"	2	13
-	^	2	14
-	.	2	13
-	+	6	63
-	+	5	0
-	+	3	13
-	+	6	6
-	+	2	13
-
-> ~/plays/lisenet/inventory
-	"	15	0
-
-> ~/plays/lisenet/roles/sample-apache/tasks/main.yml
-	"	7	22
-	^	7	23
-	.	7	22
-	+	27	0
-	+	27	16
-	+	27	0
-	+	26	22
-	+	20	19
-	+	14	24
-	+	19	10
-	+	4	22
-	+	10	22
-	+	7	22
-
 > ~/plays/lisenet/roles/sample-apache/templates/index.html.j2
 	"	1	52
 	^	1	53
@@ -348,16 +386,6 @@
 	+	7	39
 	+	2	10
 
-> ~/plays/lisenet/ansible.cfg
-	"	3	0
-	^	6	57
-	.	6	56
-	+	3	44
-	+	5	8
-	+	2	0
-	+	7	0
-	+	6	56
-
 > ~/plays/lisenet/task8-addrepo.yml
 	"	8	38
 	^	8	39
@@ -383,17 +411,3 @@
 	+	6	39
 	+	5	39
 	+	24	23
-
-> ~/plays/lisenet/users.yml
-	"	18	62
-	^	18	63
-	.	18	62
-	+	19	10
-	+	5	47
-	+	19	5
-	+	19	27
-	+	19	0
-	+	6	44
-	+	17	60
-	+	6	40
-	+	18	62
