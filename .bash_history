@@ -1255,3 +1255,21 @@ git status
 git add test.txt
 sudo git add test.txt
 git status
+sudo git commit -a -m "Update"
+sudo git push origin master
+sudo git push 
+git branch -r
+git branch
+sudo git push origin --set-upstream=testbranch
+sudo git push  --set-upstream=testbranch
+sudo git push  
+pwd
+cd ..
+pwd
+cd ..
+git status
+sudo git push
+git --config
+git config --list
+sudo git push origin master
+pwd
