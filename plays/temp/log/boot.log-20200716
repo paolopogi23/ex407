@@ -1,0 +1,484 @@
+%G[[32m  OK  [0m] Started Open-iSCSI.
+[[32m  OK  [0m] Found device Amazon Elastic Block Store 1.
+         Starting File System Check on /dev/...7-ebef-4ca0-b229-d0aa1985d57f...
+         Starting dracut initqueue hook...
+[[32m  OK  [0m] Started Show Plymouth Boot Screen.
+[[32m  OK  [0m] Reached target Paths.
+[[32m  OK  [0m] Started Forward Password Requests to Plymouth Directory Watch.
+[[32m  OK  [0m] Reached target Basic System.
+[[32m  OK  [0m] Started dracut initqueue hook.
+[[32m  OK  [0m] Reached target Remote File Systems (Pre).
+[[32m  OK  [0m] Reached target Remote File Systems.
+         Starting dracut pre-mount hook...
+[[32m  OK  [0m] Started dracut pre-mount hook.
+[[32m  OK  [0m] Started File System Check on /dev/d...447-ebef-4ca0-b229-d0aa1985d57f.
+         Mounting /sysroot...
+[[32m  OK  [0m] Mounted /sysroot.
+[[32m  OK  [0m] Reached target Initrd Root File System.
+         Starting Reload Configuration from the Real Root...
+[[32m  OK  [0m] Started Reload Configuration from the Real Root.
+[[32m  OK  [0m] Reached target Initrd File Systems.
+[[32m  OK  [0m] Reached target Initrd Default Target.
+         Starting dracut pre-pivot and cleanup hook...
+[[32m  OK  [0m] Started dracut pre-pivot and cleanup hook.
+         Starting Cleaning Up and Shutting Down Daemons...
+         Starting Plymouth switch root service...
+[[32m  OK  [0m] Stopped target Timers.
+[[32m  OK  [0m] Stopped dracut pre-pivot and cleanup hook.
+[[32m  OK  [0m] Stopped target Remote File Systems.
+[[32m  OK  [0m] Stopped target Remote File Systems (Pre).
+[[32m  OK  [0m] Stopped target Initrd Default Target.
+[[32m  OK  [0m] Stopped target Basic System.
+[[32m  OK  [0m] Stopped target Sockets.
+[[32m  OK  [0m] Closed Open-iSCSI iscsiuio Socket.
+[[32m  OK  [0m] Stopped target Slices.
+[[32m  OK  [0m] Stopped target System Initialization.
+[[32m  OK  [0m] Stopped target Swap.
+[[32m  OK  [0m] Stopped Apply Kernel Variables.
+[[32m  OK  [0m] Stopped target Local File Systems.
+[[32m  OK  [0m] Stopped target Paths.
+[[32m  OK  [0m] Stopped dracut pre-mount hook.
+[[32m  OK  [0m] Stopped dracut initqueue hook.
+[[32m  OK  [0m] Stopped udev Coldplug all Devices.
+[[32m  OK  [0m] Stopped dracut pre-trigger hook.
+         Stopping udev Kernel Device Manager...
+         Stopping Open-iSCSI...
+[[32m  OK  [0m] Stopped Open-iSCSI.
+[[32m  OK  [0m] Stopped udev Kernel Device Manager.
+[[32m  OK  [0m] Started Cleaning Up and Shutting Down Daemons.
+[[32m  OK  [0m] Stopped Create Static Device Nodes in /dev.
+[[32m  OK  [0m] Stopped Create list of required sta...ce nodes for the current kernel.
+[[32m  OK  [0m] Stopped dracut pre-udev hook.
+[[32m  OK  [0m] Closed udev Kernel Socket.
+[[32m  OK  [0m] Closed udev Control Socket.
+         Starting Cleanup udevd DB...
+[[32m  OK  [0m] Stopped dracut cmdline hook.
+[[32m  OK  [0m] Started Cleanup udevd DB.
+[[32m  OK  [0m] Reached target Switch Root.
+[[32m  OK  [0m] Started Plymouth switch root service.
+         Starting Switch Root...
+
+Welcome to [0;31mCentOS Linux 7 (Core)[0m!
+
+[[32m  OK  [0m] Stopped Switch Root.
+[[32m  OK  [0m] Stopped Journal Service.
+         Starting Journal Service...
+[[32m  OK  [0m] Created slice system-getty.slice.
+[[32m  OK  [0m] Started Forward Password Requests to Wall Directory Watch.
+[[32m  OK  [0m] Reached target Local Encrypted Volumes.
+[[32m  OK  [0m] Listening on udev Kernel Socket.
+[[32m  OK  [0m] Created slice system-serial\x2dgetty.slice.
+         Starting Create list of required st... nodes for the current kernel...
+[[32m  OK  [0m] Created slice system-vncserver.slice.
+[[32m  OK  [0m] Created slice User and Session Slice.
+[[32m  OK  [0m] Reached target Slices.
+[[32m  OK  [0m] Reached target RPC Port Mapper.
+[[32m  OK  [0m] Listening on /dev/initctl Compatibility Named Pipe.
+         Mounting Huge Pages File System...
+         Mounting NFSD configuration filesystem...
+[[32m  OK  [0m] Listening on LVM2 poll daemon socket.
+[[32m  OK  [0m] Listening on Device-mapper event daemon FIFOs.
+[[32m  OK  [0m] Reached target Host and Network Name Lookups.
+[[32m  OK  [0m] Reached target rpc_pipefs.target.
+[[32m  OK  [0m] Listening on LVM2 metadata daemon socket.
+[[32m  OK  [0m] Set up automount Arbitrary Executab...ats File System Automount Point.
+         Starting Monitoring of LVM2 mirrors... dmeventd or progress polling...
+         Mounting POSIX Message Queue File System...
+[[32m  OK  [0m] Listening on Delayed Shutdown Socket.
+         Starting Read and set NIS domainname from /etc/sysconfig/network...
+[[32m  OK  [0m] Listening on udev Control Socket.
+[[32m  OK  [0m] Stopped target Switch Root.
+[[32m  OK  [0m] Stopped target Initrd File Systems.
+[[32m  OK  [0m] Stopped target Initrd Root File System.
+         Starting Remount Root and Kernel File Systems...
+         Starting Apply Kernel Variables...
+[[32m  OK  [0m] Created slice system-selinux\x2dpol...grate\x2dlocal\x2dchanges.slice.
+         Mounting Debug File System...
+[[32m  OK  [0m] Started Create list of required sta...ce nodes for the current kernel.
+         Starting Create Static Device Nodes in /dev...
+[[32m  OK  [0m] Mounted Debug File System.
+[[32m  OK  [0m] Mounted POSIX Message Queue File System.
+[[32m  OK  [0m] Mounted Huge Pages File System.
+[[32m  OK  [0m] Started Remount Root and Kernel File Systems.
+         Starting Configure read-only root support...
+         Activating swap /root/swap...
+         Starting udev Coldplug all Devices...
+[[32m  OK  [0m] Started Read and set NIS domainname from /etc/sysconfig/network.
+[[32m  OK  [0m] Started Apply Kernel Variables.
+[[32m  OK  [0m] Started Journal Service.
+         Starting Flush Journal to Persistent Storage...
+[[32m  OK  [0m] Started udev Coldplug all Devices.
+[[32m  OK  [0m] Started Flush Journal to Persistent Storage.
+[[32m  OK  [0m] Started Create Static Device Nodes in /dev.
+[[32m  OK  [0m] Mounted NFSD configuration filesystem.
+[[32m  OK  [0m] Started Configure read-only root support.
+         Starting Load/Save Random Seed...
+         Starting udev Kernel Device Manager...
+[[32m  OK  [0m] Started Load/Save Random Seed.
+[[32m  OK  [0m] Started LVM2 metadata daemon.
+[[32m  OK  [0m] Activated swap /root/swap.
+[[32m  OK  [0m] Reached target Swap.
+[[32m  OK  [0m] Started udev Kernel Device Manager.
+[[32m  OK  [0m] Found device /dev/ttyS0.
+%G[[32m  OK  [0m] Started Monitoring of LVM2 mirrors,...ng dmeventd or progress polling.
+[[32m  OK  [0m] Reached target Local File Systems (Pre).
+[[32m  OK  [0m] Reached target Local File Systems.
+         Starting Tell Plymouth To Write Out Runtime Data...
+         Starting Preprocess NFS configuration...
+         Starting Import network configuration from initramfs...
+[[32m  OK  [0m] Started Preprocess NFS configuration.
+[[32m  OK  [0m] Started Import network configuration from initramfs.
+         Starting Create Volatile Files and Directories...
+         Starting NFSv4 ID-name mapping service...
+[[32m  OK  [0m] Started Create Volatile Files and Directories.
+[[32m  OK  [0m] Started Tell Plymouth To Write Out Runtime Data.
+         Starting Security Auditing Service...
+[[32m  OK  [0m] Started NFSv4 ID-name mapping service.
+[[32m  OK  [0m] Started Security Auditing Service.
+         Starting Update UTMP about System Boot/Shutdown...
+[[32m  OK  [0m] Started Update UTMP about System Boot/Shutdown.
+[[32m  OK  [0m] Reached target System Initialization.
+[[32m  OK  [0m] Listening on RPCbind Server Activation Socket.
+         Starting RPC bind service...
+[[32m  OK  [0m] Listening on Open-iSCSI iscsiuio Socket.
+[[32m  OK  [0m] Listening on Open-iSCSI iscsid Socket.
+[[32m  OK  [0m] Started Daily Cleanup of Temporary Directories.
+[[32m  OK  [0m] Reached target Timers.
+[[32m  OK  [0m] Listening on D-Bus System Message Bus Socket.
+         Starting Initial cloud-init job (pre-networking)...
+[[32m  OK  [0m] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[[32m  OK  [0m] Reached target Sockets.
+[[32m  OK  [0m] Started Flexible branding.
+[[32m  OK  [0m] Reached target Paths.
+[[32m  OK  [0m] Reached target Basic System.
+         Starting Authorization Manager...
+         Starting Avahi mDNS/DNS-SD Stack...
+[[32m  OK  [0m] Started D-Bus System Message Bus.
+[[32m  OK  [0m] Started Avahi mDNS/DNS-SD Stack.
+         Starting GSSAPI Proxy Daemon...
+         Starting NTP client/server...
+         Starting Dump dmesg to /var/log/dmesg...
+         Starting Login Service...
+[[32m  OK  [0m] Started irqbalance daemon.
+[[32m  OK  [0m] Started RPC bind service.
+[[32m  OK  [0m] Started Login Service.
+[[32m  OK  [0m] Started Dump dmesg to /var/log/dmesg.
+[[32m  OK  [0m] Started GSSAPI Proxy Daemon.
+[[32m  OK  [0m] Reached target NFS client services.
+[[32m  OK  [0m] Started NTP client/server.
+[[32m  OK  [0m] Started Authorization Manager.
+[   14.041156] cloud-init[684]: Cloud-init v. 18.5 running 'init-local' at Wed, 15 Jul 2020 13:46:32 +0000. Up 13.98 seconds.
+[[32m  OK  [0m] Started Initial cloud-init job (pre-networking).
+[[32m  OK  [0m] Reached target Network (Pre).
+         Starting Network Manager...
+[[32m  OK  [0m] Started Network Manager.
+         Starting Network Manager Wait Online...
+         Starting Hostname Service...
+[[32m  OK  [0m] Started Hostname Service.
+         Starting Network Manager Script Dispatcher Service...
+[[32m  OK  [0m] Started Network Manager Script Dispatcher Service.
+[[32m  OK  [0m] Started Network Manager Wait Online.
+         Starting LSB: Bring up/down networking...
+[[1;31mFAILED[0m] Failed to start LSB: Bring up/down networking.
+See 'systemctl status network.service' for details.
+[[32m  OK  [0m] Reached target Network.
+         Starting Dynamic System Tuning Daemon...
+         Starting Remote desktop service (VNC)...
+         Starting Postfix Mail Transport Agent...
+[[32m  OK  [0m] Started Playground Web Terminal.
+         Starting Logout off all iSCSI sessions on shutdown...
+         Starting Initial cloud-init job (metadata service crawler)...
+[[32m  OK  [0m] Started Logout off all iSCSI sessions on shutdown.
+[   16.892300] cloud-init[1000]: Cloud-init v. 18.5 running 'init' at Wed, 15 Jul 2020 13:46:35 +0000. Up 16.85 seconds.
+[   16.965710] cloud-init[1000]: ci-info: ++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+[   16.966074] cloud-init[1000]: ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+[   16.966330] cloud-init[1000]: ci-info: | Device |  Up  |           Address           |      Mask     | Scope  |     Hw-Address    |
+[   16.966587] cloud-init[1000]: ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+[   16.966823] cloud-init[1000]: ci-info: |  ens5  | True |        172.31.110.163       | 255.255.240.0 | global | 06:0b:a3:52:e9:48 |
+[   16.967036] cloud-init[1000]: ci-info: |  ens5  | True | fe80::40b:a3ff:fe52:e948/64 |       .       |  link  | 06:0b:a3:52:e9:48 |
+[   16.967230] cloud-init[1000]: ci-info: |   lo   | True |          127.0.0.1          |   255.0.0.0   |  host  |         .         |
+[   16.967445] cloud-init[1000]: ci-info: |   lo   | True |           ::1/128           |       .       |  host  |         .         |
+[   16.967682] cloud-init[1000]: ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+[   16.967927] cloud-init[1000]: ci-info: +++++++++++++++++++++++++++++Route IPv4 info+++++++++++++++++++++++++++++
+[   16.968197] cloud-init[1000]: ci-info: +-------+-------------+-------------+---------------+-----------+-------+
+[   16.968441] cloud-init[1000]: ci-info: | Route | Destination |   Gateway   |    Genmask    | Interface | Flags |
+[   16.968677] cloud-init[1000]: ci-info: +-------+-------------+-------------+---------------+-----------+-------+
+[   16.985943] cloud-init[1000]: ci-info: |   0   |   0.0.0.0   | 172.31.96.1 |    0.0.0.0    |    ens5   |   UG  |
+[   16.996646] cloud-init[1000]: ci-info: |   1   | 172.31.96.0 |   0.0.0.0   | 255.255.240.0 |    ens5   |   U   |
+[   16.996904] cloud-init[1000]: ci-info: +-------+-------------+-------------+---------------+-----------+-------+
+[   16.997174] cloud-init[1000]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+[   16.997410] cloud-init[1000]: ci-info: +-------+-------------+---------+-----------+-------+
+[   16.997650] cloud-init[1000]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+[   16.997896] cloud-init[1000]: ci-info: +-------+-------------+---------+-----------+-------+
+[   16.998177] cloud-init[1000]: ci-info: |   9   |  fe80::/64  |    ::   |    ens5   |   U   |
+[   16.998444] cloud-init[1000]: ci-info: |   12  |   ff00::/8  |    ::   |    ens5   |   U   |
+[   16.998691] cloud-init[1000]: ci-info: +-------+-------------+---------+-----------+-------+
+[[32m  OK  [0m] Started Dynamic System Tuning Daemon.
+[[32m  OK  [0m] Started Postfix Mail Transport Agent.
+[[32m  OK  [0m] Started Initial cloud-init job (metadata service crawler).
+[[32m  OK  [0m] Reached target Network is Online.
+         Starting NFS status monitor for NFSv2/3 locking....
+         Starting System Logging Service...
+         Starting NFS Mount Daemon...
+[[32m  OK  [0m] Started amazon-ssm-agent.
+         Starting Availability of block devices...
+[[32m  OK  [0m] Reached target Remote File Systems (Pre).
+[[32m  OK  [0m] Reached target Remote File Systems.
+         Starting OpenSSH server daemon...
+         Starting Permit User Sessions...
+[[32m  OK  [0m] Reached target Cloud-config availability.
+         Starting Apply the settings specified in cloud-config...
+[[32m  OK  [0m] Started NFS status monitor for NFSv2/3 locking..
+[[32m  OK  [0m] Started Availability of block devices.
+[[32m  OK  [0m] Started Permit User Sessions.
+[[32m  OK  [0m] Started Command Scheduler.
+         Starting Terminate Plymouth Boot Screen...
+         Starting Wait for Plymouth Boot Screen to Quit...
+[[32m  OK  [0m] Created slice User Slice of cloud_user.
+[[32m  OK  [0m] Started Session c1 of user cloud_user.
+[[32m  OK  [0m] Started NFS Mount Daemon.
+         Starting NFS server and services...
+[[32m  OK  [0m] Started System Logging Service.
+[[32m  OK  [0m] Started OpenSSH server daemon.
+[[32m  OK  [0m] Started Show Plymouth Boot Screen.
+[[32m  OK  [0m] Reached target Paths.
+[[32m  OK  [0m] Started Forward Password Requests to Plymouth Directory Watch.
+[[32m  OK  [0m] Reached target Basic System.
+%G[[32m  OK  [0m] Started Open-iSCSI.
+[[32m  OK  [0m] Found device Amazon Elastic Block Store 1.
+         Starting File System Check on /dev/...7-ebef-4ca0-b229-d0aa1985d57f...
+         Starting dracut initqueue hook...
+[[32m  OK  [0m] Started dracut initqueue hook.
+         Starting dracut pre-mount hook...
+[[32m  OK  [0m] Reached target Remote File Systems (Pre).
+[[32m  OK  [0m] Reached target Remote File Systems.
+[[32m  OK  [0m] Started dracut pre-mount hook.
+[[32m  OK  [0m] Started File System Check on /dev/d...447-ebef-4ca0-b229-d0aa1985d57f.
+         Mounting /sysroot...
+[[32m  OK  [0m] Mounted /sysroot.
+[[32m  OK  [0m] Reached target Initrd Root File System.
+         Starting Reload Configuration from the Real Root...
+[[32m  OK  [0m] Started Reload Configuration from the Real Root.
+[[32m  OK  [0m] Reached target Initrd File Systems.
+[[32m  OK  [0m] Reached target Initrd Default Target.
+         Starting dracut pre-pivot and cleanup hook...
+[[32m  OK  [0m] Started dracut pre-pivot and cleanup hook.
+         Starting Cleaning Up and Shutting Down Daemons...
+[[32m  OK  [0m] Stopped dracut pre-pivot and cleanup hook.
+[[32m  OK  [0m] Stopped target Initrd Default Target.
+[[32m  OK  [0m] Stopped dracut pre-mount hook.
+[[32m  OK  [0m] Stopped target Remote File Systems.
+[[32m  OK  [0m] Stopped target Remote File Systems (Pre).
+[[32m  OK  [0m] Stopped dracut initqueue hook.
+         Stopping Open-iSCSI...
+         Starting Plymouth switch root service...
+[[32m  OK  [0m] Stopped target Timers.
+[[32m  OK  [0m] Stopped target Basic System.
+[[32m  OK  [0m] Stopped target Sockets.
+[[32m  OK  [0m] Closed Open-iSCSI iscsiuio Socket.
+[[32m  OK  [0m] Stopped target Slices.
+[[32m  OK  [0m] Stopped target System Initialization.
+[[32m  OK  [0m] Stopped target Swap.
+[[32m  OK  [0m] Stopped Apply Kernel Variables.
+[[32m  OK  [0m] Stopped udev Coldplug all Devices.
+[[32m  OK  [0m] Stopped dracut pre-trigger hook.
+         Stopping udev Kernel Device Manager...
+[[32m  OK  [0m] Stopped target Local File Systems.
+[[32m  OK  [0m] Stopped target Paths.
+[[32m  OK  [0m] Stopped udev Kernel Device Manager.
+[[32m  OK  [0m] Stopped Open-iSCSI.
+[[32m  OK  [0m] Started Cleaning Up and Shutting Down Daemons.
+[[32m  OK  [0m] Stopped Create Static Device Nodes in /dev.
+[[32m  OK  [0m] Stopped Create list of required sta...ce nodes for the current kernel.
+[[32m  OK  [0m] Stopped dracut pre-udev hook.
+[[32m  OK  [0m] Stopped dracut cmdline hook.
+[[32m  OK  [0m] Closed udev Control Socket.
+[[32m  OK  [0m] Closed udev Kernel Socket.
+         Starting Cleanup udevd DB...
+[[32m  OK  [0m] Started Cleanup udevd DB.
+[[32m  OK  [0m] Reached target Switch Root.
+[[32m  OK  [0m] Started Plymouth switch root service.
+         Starting Switch Root...
+
+Welcome to [0;31mCentOS Linux 7 (Core)[0m!
+
+[[32m  OK  [0m] Stopped Switch Root.
+[[32m  OK  [0m] Stopped Journal Service.
+         Starting Journal Service...
+[[32m  OK  [0m] Reached target Local Encrypted Volumes.
+[[32m  OK  [0m] Listening on LVM2 poll daemon socket.
+[[32m  OK  [0m] Listening on udev Control Socket.
+[[32m  OK  [0m] Created slice User and Session Slice.
+         Mounting NFSD configuration filesystem...
+         Starting Create list of required st... nodes for the current kernel...
+         Mounting POSIX Message Queue File System...
+[[32m  OK  [0m] Listening on Delayed Shutdown Socket.
+[[32m  OK  [0m] Created slice system-serial\x2dgetty.slice.
+[[32m  OK  [0m] Listening on /dev/initctl Compatibility Named Pipe.
+         Mounting Huge Pages File System...
+[[32m  OK  [0m] Set up automount Arbitrary Executab...ats File System Automount Point.
+[[32m  OK  [0m] Reached target RPC Port Mapper.
+         Starting Read and set NIS domainname from /etc/sysconfig/network...
+[[32m  OK  [0m] Started Forward Password Requests to Wall Directory Watch.
+[[32m  OK  [0m] Created slice system-vncserver.slice.
+[[32m  OK  [0m] Created slice system-selinux\x2dpol...grate\x2dlocal\x2dchanges.slice.
+[[32m  OK  [0m] Reached target rpc_pipefs.target.
+[[32m  OK  [0m] Listening on LVM2 metadata daemon socket.
+[[32m  OK  [0m] Created slice system-getty.slice.
+[[32m  OK  [0m] Reached target Host and Network Name Lookups.
+[[32m  OK  [0m] Listening on udev Kernel Socket.
+         Mounting Debug File System...
+[[32m  OK  [0m] Listening on Device-mapper event daemon FIFOs.
+         Starting Monitoring of LVM2 mirrors... dmeventd or progress polling...
+         Starting Remount Root and Kernel File Systems...
+         Starting Apply Kernel Variables...
+[[32m  OK  [0m] Reached target Slices.
+[[32m  OK  [0m] Stopped target Switch Root.
+[[32m  OK  [0m] Stopped target Initrd File Systems.
+[[32m  OK  [0m] Stopped target Initrd Root File System.
+[[32m  OK  [0m] Mounted Debug File System.
+[[32m  OK  [0m] Mounted POSIX Message Queue File System.
+[[32m  OK  [0m] Mounted Huge Pages File System.
+[[32m  OK  [0m] Started Read and set NIS domainname from /etc/sysconfig/network.
+[[32m  OK  [0m] Started Remount Root and Kernel File Systems.
+         Starting udev Coldplug all Devices...
+         Starting Configure read-only root support...
+         Activating swap /root/swap...
+[[32m  OK  [0m] Started Apply Kernel Variables.
+[[32m  OK  [0m] Started Create list of required sta...ce nodes for the current kernel.
+         Starting Create Static Device Nodes in /dev...
+[[32m  OK  [0m] Started Journal Service.
+         Starting Flush Journal to Persistent Storage...
+[[32m  OK  [0m] Started Flush Journal to Persistent Storage.
+[[32m  OK  [0m] Started LVM2 metadata daemon.
+[[32m  OK  [0m] Started udev Coldplug all Devices.
+[[32m  OK  [0m] Started Create Static Device Nodes in /dev.
+         Starting udev Kernel Device Manager...
+[[32m  OK  [0m] Mounted NFSD configuration filesystem.
+[[32m  OK  [0m] Started Configure read-only root support.
+         Starting Load/Save Random Seed...
+[[32m  OK  [0m] Started Load/Save Random Seed.
+[[32m  OK  [0m] Activated swap /root/swap.
+[[32m  OK  [0m] Reached target Swap.
+[[32m  OK  [0m] Started udev Kernel Device Manager.
+[[32m  OK  [0m] Found device /dev/ttyS0.
+[[32m  OK  [0m] Started Monitoring of LVM2 mirrors,...ng dmeventd or progress polling.
+[[32m  OK  [0m] Reached target Local File Systems (Pre).
+[[32m  OK  [0m] Reached target Local File Systems.
+         Starting Import network configuration from initramfs...
+         Starting Tell Plymouth To Write Out Runtime Data...
+         Starting Preprocess NFS configuration...
+%G[[32m  OK  [0m] Started Preprocess NFS configuration.
+         Starting NFSv4 ID-name mapping service...
+[[32m  OK  [0m] Started NFSv4 ID-name mapping service.
+[[32m  OK  [0m] Started Import network configuration from initramfs.
+         Starting Create Volatile Files and Directories...
+[[32m  OK  [0m] Started Tell Plymouth To Write Out Runtime Data.
+[[32m  OK  [0m] Started Create Volatile Files and Directories.
+         Starting Security Auditing Service...
+[[32m  OK  [0m] Started Security Auditing Service.
+         Starting Update UTMP about System Boot/Shutdown...
+[[32m  OK  [0m] Started Update UTMP about System Boot/Shutdown.
+[[32m  OK  [0m] Reached target System Initialization.
+[[32m  OK  [0m] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[[32m  OK  [0m] Listening on RPCbind Server Activation Socket.
+         Starting RPC bind service...
+[[32m  OK  [0m] Listening on Open-iSCSI iscsiuio Socket.
+[[32m  OK  [0m] Started Flexible branding.
+[[32m  OK  [0m] Reached target Paths.
+[[32m  OK  [0m] Started Daily Cleanup of Temporary Directories.
+[[32m  OK  [0m] Reached target Timers.
+[[32m  OK  [0m] Listening on D-Bus System Message Bus Socket.
+         Starting Initial cloud-init job (pre-networking)...
+[[32m  OK  [0m] Listening on Open-iSCSI iscsid Socket.
+[[32m  OK  [0m] Reached target Sockets.
+[[32m  OK  [0m] Reached target Basic System.
+         Starting Avahi mDNS/DNS-SD Stack...
+         Starting NTP client/server...
+         Starting Authorization Manager...
+[[32m  OK  [0m] Started irqbalance daemon.
+[[32m  OK  [0m] Started D-Bus System Message Bus.
+[[32m  OK  [0m] Started Avahi mDNS/DNS-SD Stack.
+         Starting GSSAPI Proxy Daemon...
+         Starting Login Service...
+         Starting Dump dmesg to /var/log/dmesg...
+[[32m  OK  [0m] Started RPC bind service.
+[[32m  OK  [0m] Started Login Service.
+[[32m  OK  [0m] Started NTP client/server.
+[[32m  OK  [0m] Started Dump dmesg to /var/log/dmesg.
+[[32m  OK  [0m] Started GSSAPI Proxy Daemon.
+[[32m  OK  [0m] Reached target NFS client services.
+[[32m  OK  [0m] Started Authorization Manager.
+[   14.991993] cloud-init[681]: Cloud-init v. 18.5 running 'init-local' at Thu, 16 Jul 2020 05:50:19 +0000. Up 14.91 seconds.
+[[32m  OK  [0m] Started Initial cloud-init job (pre-networking).
+[[32m  OK  [0m] Reached target Network (Pre).
+         Starting Network Manager...
+[[32m  OK  [0m] Started Network Manager.
+         Starting Network Manager Wait Online...
+         Starting Hostname Service...
+[[32m  OK  [0m] Started Hostname Service.
+         Starting Network Manager Script Dispatcher Service...
+[[32m  OK  [0m] Started Network Manager Script Dispatcher Service.
+[[32m  OK  [0m] Started Network Manager Wait Online.
+         Starting LSB: Bring up/down networking...
+[[1;31mFAILED[0m] Failed to start LSB: Bring up/down networking.
+See 'systemctl status network.service' for details.
+         Starting Initial cloud-init job (metadata service crawler)...
+[[32m  OK  [0m] Reached target Network.
+         Starting Remote desktop service (VNC)...
+         Starting Postfix Mail Transport Agent...
+         Starting Dynamic System Tuning Daemon...
+         Starting Logout off all iSCSI sessions on shutdown...
+[[32m  OK  [0m] Started Playground Web Terminal.
+[[32m  OK  [0m] Started Logout off all iSCSI sessions on shutdown.
+[   18.882334] cloud-init[992]: Cloud-init v. 18.5 running 'init' at Thu, 16 Jul 2020 05:50:23 +0000. Up 18.84 seconds.
+[   18.925063] cloud-init[992]: ci-info: ++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+[   18.925838] cloud-init[992]: ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+[   18.926116] cloud-init[992]: ci-info: | Device |  Up  |           Address           |      Mask     | Scope  |     Hw-Address    |
+[   18.926361] cloud-init[992]: ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+[   18.926602] cloud-init[992]: ci-info: |  ens5  | True |        172.31.110.163       | 255.255.240.0 | global | 06:0b:a3:52:e9:48 |
+[   18.926827] cloud-init[992]: ci-info: |  ens5  | True | fe80::40b:a3ff:fe52:e948/64 |       .       |  link  | 06:0b:a3:52:e9:48 |
+[   18.927069] cloud-init[992]: ci-info: |   lo   | True |          127.0.0.1          |   255.0.0.0   |  host  |         .         |
+[   18.927306] cloud-init[992]: ci-info: |   lo   | True |           ::1/128           |       .       |  host  |         .         |
+[   18.927527] cloud-init[992]: ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+[   18.927759] cloud-init[992]: ci-info: +++++++++++++++++++++++++++++Route IPv4 info+++++++++++++++++++++++++++++
+[   18.927982] cloud-init[992]: ci-info: +-------+-------------+-------------+---------------+-----------+-------+
+[   18.928290] cloud-init[992]: ci-info: | Route | Destination |   Gateway   |    Genmask    | Interface | Flags |
+[   18.928525] cloud-init[992]: ci-info: +-------+-------------+-------------+---------------+-----------+-------+
+[   18.928787] cloud-init[992]: ci-info: |   0   |   0.0.0.0   | 172.31.96.1 |    0.0.0.0    |    ens5   |   UG  |
+[   18.929058] cloud-init[992]: ci-info: |   1   | 172.31.96.0 |   0.0.0.0   | 255.255.240.0 |    ens5   |   U   |
+[   18.929308] cloud-init[992]: ci-info: +-------+-------------+-------------+---------------+-----------+-------+
+[   18.929558] cloud-init[992]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+[   18.929795] cloud-init[992]: ci-info: +-------+-------------+---------+-----------+-------+
+[   18.930094] cloud-init[992]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+[   18.930333] cloud-init[992]: ci-info: +-------+-------------+---------+-----------+-------+
+[   18.930589] cloud-init[992]: ci-info: |   9   |  fe80::/64  |    ::   |    ens5   |   U   |
+[   18.930832] cloud-init[992]: ci-info: |   13  |   ff00::/8  |    ::   |    ens5   |   U   |
+[   18.931128] cloud-init[992]: ci-info: +-------+-------------+---------+-----------+-------+
+[[32m  OK  [0m] Started Dynamic System Tuning Daemon.
+[[32m  OK  [0m] Started Postfix Mail Transport Agent.
+[[32m  OK  [0m] Started Initial cloud-init job (metadata service crawler).
+[[32m  OK  [0m] Reached target Network is Online.
+[[32m  OK  [0m] Started amazon-ssm-agent.
+[[32m  OK  [0m] Reached target Remote File Systems (Pre).
+[[32m  OK  [0m] Reached target Remote File Systems.
+         Starting Permit User Sessions...
+         Starting Availability of block devices...
+         Starting NFS Mount Daemon...
+         Starting System Logging Service...
+         Starting NFS status monitor for NFSv2/3 locking....
+[[32m  OK  [0m] Reached target Cloud-config availability.
+         Starting Apply the settings specified in cloud-config...
+         Starting OpenSSH server daemon...
+[[32m  OK  [0m] Started Permit User Sessions.
+[[32m  OK  [0m] Started Availability of block devices.
+[[32m  OK  [0m] Started Command Scheduler.
+         Starting Wait for Plymouth Boot Screen to Quit...
+[[32m  OK  [0m] Created slice User Slice of cloud_user.
+[[32m  OK  [0m] Started Session c1 of user cloud_user.
+         Starting Terminate Plymouth Boot Screen...
+[[32m  OK  [0m] Started OpenSSH server daemon.
+[[32m  OK  [0m] Started System Logging Service.
+[[32m  OK  [0m] Started NFS status monitor for NFSv2/3 locking..
+[[32m  OK  [0m] Started NFS Mount Daemon.
+         Starting NFS server and services...

@@ -1,0 +1,18 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+  - name: Change sshd X11forwarding
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      mode: 0644
+      regexp: "^X11Forwarding yes"
+      line: "X11Forwarding no"
+      state: present
+    when: inventory_hostname in groups.infra
+
+  - name: restart sshd
+    service:
+      name: sshd
+      state: restarted
+    when: inventory_hostname in groups.infra

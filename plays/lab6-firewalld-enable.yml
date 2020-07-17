@@ -1,0 +1,21 @@
+---
+- hosts: infra
+  become: yes
+  tasks:
+
+  - name: install firewalld
+    action: yum name=firewalld state=installed
+  - name: Enable firewalld on system reboot
+    service: name=firewalld enabled=yes
+  - name: Start service firewalld, if not started
+    service:
+      name: firewalld
+      state: started
+  - name: Make sure firewalld is enabled by creating custom zone
+    firewalld:
+      zone: custom
+      state: present
+      permanent: yes
+
+  - name: reload to take effect
+    service: name=firewalld state=restarted

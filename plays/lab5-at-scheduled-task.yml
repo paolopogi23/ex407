@@ -1,0 +1,9 @@
+---
+- hosts: infra
+  become: no
+  tasks:
+  - name: Schedule AT job
+    at:
+      command: df -h > /tmp/diskspace.txt
+      count: 20
+      units: minutes

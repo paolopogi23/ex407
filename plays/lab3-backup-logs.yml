@@ -1,0 +1,36 @@
+---
+- hosts: backend
+  become: yes
+  
+  tasks:
+  - name: Archive logs on the remote hosts
+    archive:
+      path: /var/log
+      dest: /var/tmp/logs-{{ ansible_hostname }}.tar.gz
+      format: gz
+
+  - name: Fetch logs from servers to ansible controller
+    fetch:
+      src: /var/tmp/logs-{{ ansible_hostname }}.tar.gz
+      dest: /home/ansible/plays/logs-{{ ansible_hostname }}.tar.gz
+      flat: yes
+
+
+- hosts: localhost
+  become: yes
+  tasks:   
+
+  - name: Create directory for unarchive
+    file:
+      state: directory
+      path: /home/ansible/plays/temp
+      owner: ansible
+      group: ansible
+      mode: 0777
+
+  - name: Unarchive 1 file
+    unarchive:
+      src: /home/ansible/plays/logs-{{ item }}.tar.gz
+      dest: /home/ansible/plays/temp
+    with_items: 
+      - juanpaolosantiago1c

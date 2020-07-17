@@ -1,0 +1,17 @@
+Apr 15 18:27:50 ip-172-31-24-75 postfix/postfix-script[1340]: starting the Postfix mail system
+Apr 15 18:27:50 ip-172-31-24-75 postfix/master[1350]: daemon started -- version 2.10.1, configuration /etc/postfix
+May 18 16:18:42 ip-172-31-37-24 postfix/postfix-script[1402]: starting the Postfix mail system
+May 18 16:18:42 ip-172-31-37-24 postfix/master[1406]: daemon started -- version 2.10.1, configuration /etc/postfix
+May 18 16:37:16 peteelizalde1c postfix/postfix-script[15846]: stopping the Postfix mail system
+May 18 16:37:16 peteelizalde1c postfix/postfix-script[15849]: waiting for the Postfix mail system to terminate
+May 18 16:37:16 peteelizalde1c postfix/master[1406]: terminating on signal 15
+May 18 16:37:18 peteelizalde1c postfix/postfix-script[15931]: starting the Postfix mail system
+May 18 16:37:18 peteelizalde1c postfix/master[15933]: daemon started -- version 2.10.1, configuration /etc/postfix
+May 18 16:55:17 ip-172-31-37-24 postfix/postfix-script[1285]: starting the Postfix mail system
+May 18 16:55:17 ip-172-31-37-24 postfix/master[1287]: daemon started -- version 2.10.1, configuration /etc/postfix
+Jun 18 15:10:17 ip-172-31-109-94 postfix/postfix-script[1307]: starting the Postfix mail system
+Jun 18 15:10:17 ip-172-31-109-94 postfix/master[1309]: daemon started -- version 2.10.1, configuration /etc/postfix
+Jun 18 16:17:37 ip-172-31-109-94 postfix/postfix-script[1271]: starting the Postfix mail system
+Jun 18 16:17:37 ip-172-31-109-94 postfix/master[1274]: daemon started -- version 2.10.1, configuration /etc/postfix
+Jul  6 14:36:14 ip-172-31-110-163 postfix/postfix-script[1306]: starting the Postfix mail system
+Jul  6 14:36:14 ip-172-31-110-163 postfix/master[1310]: daemon started -- version 2.10.1, configuration /etc/postfix

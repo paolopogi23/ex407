@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+  - name: Create Motd lab
+    lineinfile:
+      path: /etc/motd
+      line: "Welcome to Lab server"
+    when: inventory_hostname in groups [ 'lab' ]
+
+  - name: Create Motd web
+    lineinfile:
+      path: /etc/motd
+      line: "Welcome to Web server"
+    when: inventory_hostname in groups [ 'web' ]
+
+  - name: Create Motd DB
+    lineinfile:
+      path: /etc/motd
+      line: "Welcome to Database server"
+    when: inventory_hostname in groups [ 'db' ]
+

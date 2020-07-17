@@ -1,0 +1,6 @@
+haproxy_backend_servers: 
+  - name: juanpaolosantiago1c
+    address: 172.31.110.163
+  - name: juanpaolosantiago2c
+    address: 172.31.108.136
+

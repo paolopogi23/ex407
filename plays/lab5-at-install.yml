@@ -1,0 +1,10 @@
+---
+- hosts: infra
+  user: ansible
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Install AT package
+    yum: name=at state=present
+  - name: enable AT daemon
+    service: name=atd state=started enabled=yes

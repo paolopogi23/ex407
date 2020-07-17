@@ -1,0 +1,7 @@
+---
+- hosts: db
+  become: yes
+  vars_files:
+    - /home/ansible/plays/lisenet/task5-secret.yml
+  roles:
+    - /home/ansible/plays/lisenet/roles/sample-mysql

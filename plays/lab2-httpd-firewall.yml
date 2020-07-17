@@ -1,0 +1,26 @@
+---
+- hosts: infra
+  become: yes
+  tasks:
+  - name: Install Apache httpd
+    yum: name=httpd state=present
+  - name: Install Elinks for browser
+    yum: name=elinks state=present
+  - name: start apache server
+    service: name=httpd state=started enabled=yes
+  
+
+  #Firewalld Tasks
+  - name: Install Firewalld
+    yum: name=firewalld state=present
+  - name: enable firewalld service and start it
+    service: name=firewalld state=started enabled=yes
+
+  #Allow Http port 
+  - name: FirewallCMD configuration
+    firewalld:
+      service: http
+      state: enabled
+      permanent: yes
+  - name: reload to make rules available
+    service: name=firewalld state=restarted

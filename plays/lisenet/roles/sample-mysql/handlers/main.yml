@@ -1,0 +1,9 @@
+---
+# handlers file for sample-mysql
+- name: fw restart
+  service: name=firewalld state=restarted
+  listen: fw restart
+
+- name: db restart
+  service: name=mysql state=restarted
+  listen: fw restart

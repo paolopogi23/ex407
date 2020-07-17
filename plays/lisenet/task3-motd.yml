@@ -1,0 +1,21 @@
+---
+- hosts: servers
+  become: yes
+  tasks:
+  - name: Create motd for Web Servers
+    copy:
+      content: 'Welcome to Web servers "{{ ansible_hostname }}"'
+      dest: /etc/motd
+    when: inventory_hostname in groups.web
+
+  - name: Create motd for DB Servers
+    copy:
+      content: 'Welcome to DB servers "{{ ansible_hostname }}"'
+      dest: /etc/motd
+    when: inventory_hostname in groups.db
+
+  - name: Create motd for LAB Servers
+    copy:
+      content: 'Welcome to LAB servers "{{ ansible_hostname }}"'
+      dest: /etc/motd
+    when: inventory_hostname in groups.lab

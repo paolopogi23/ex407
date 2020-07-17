@@ -1,0 +1,33 @@
+2017-09-17 02:54:15 WARNING: ICMP type 'beyond-scope' is not supported by the kernel for ipv6.
+2017-09-17 02:54:15 WARNING: beyond-scope: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 02:54:15 WARNING: ICMP type 'failed-policy' is not supported by the kernel for ipv6.
+2017-09-17 02:54:15 WARNING: failed-policy: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 02:54:15 WARNING: ICMP type 'reject-route' is not supported by the kernel for ipv6.
+2017-09-17 02:54:15 WARNING: reject-route: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 03:03:26 WARNING: ICMP type 'beyond-scope' is not supported by the kernel for ipv6.
+2017-09-17 03:03:26 WARNING: beyond-scope: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 03:03:26 WARNING: ICMP type 'failed-policy' is not supported by the kernel for ipv6.
+2017-09-17 03:03:26 WARNING: failed-policy: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 03:03:27 WARNING: ICMP type 'reject-route' is not supported by the kernel for ipv6.
+2017-09-17 03:03:27 WARNING: reject-route: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 14:26:23 WARNING: ICMP type 'beyond-scope' is not supported by the kernel for ipv6.
+2017-09-17 14:26:23 WARNING: beyond-scope: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 14:26:23 WARNING: ICMP type 'failed-policy' is not supported by the kernel for ipv6.
+2017-09-17 14:26:23 WARNING: failed-policy: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 14:26:23 WARNING: ICMP type 'reject-route' is not supported by the kernel for ipv6.
+2017-09-17 14:26:23 WARNING: reject-route: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 14:55:51 WARNING: ICMP type 'beyond-scope' is not supported by the kernel for ipv6.
+2017-09-17 14:55:51 WARNING: beyond-scope: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 14:55:51 WARNING: ICMP type 'failed-policy' is not supported by the kernel for ipv6.
+2017-09-17 14:55:51 WARNING: failed-policy: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 14:55:51 WARNING: ICMP type 'reject-route' is not supported by the kernel for ipv6.
+2017-09-17 14:55:51 WARNING: reject-route: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 15:05:23 WARNING: ICMP type 'beyond-scope' is not supported by the kernel for ipv6.
+2017-09-17 15:05:23 WARNING: beyond-scope: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 15:05:23 WARNING: ICMP type 'failed-policy' is not supported by the kernel for ipv6.
+2017-09-17 15:05:23 WARNING: failed-policy: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2017-09-17 15:05:23 WARNING: ICMP type 'reject-route' is not supported by the kernel for ipv6.
+2017-09-17 15:05:23 WARNING: reject-route: INVALID_ICMPTYPE: No supported ICMP type., ignoring for run-time.
+2020-07-16 11:27:17 WARNING: AllowZoneDrifting is enabled. This is considered an insecure configuration option. It will be removed in a future release. Please consider disabling it now.
+2020-07-16 11:30:13 WARNING: AllowZoneDrifting is enabled. This is considered an insecure configuration option. It will be removed in a future release. Please consider disabling it now.
+2020-07-16 11:31:32 WARNING: AllowZoneDrifting is enabled. This is considered an insecure configuration option. It will be removed in a future release. Please consider disabling it now.

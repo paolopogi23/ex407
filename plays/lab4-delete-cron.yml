@@ -1,0 +1,12 @@
+---
+- hosts: infra
+  become: yes
+  gather_facts: yes
+  user: ansible
+  tasks:
+  - name: delete cron entry named "cron job1"
+    cron:
+      name: "cron job1"
+      state: absent
+
+  - debug: msg="{{ ansible_hostname }} cron deleted"

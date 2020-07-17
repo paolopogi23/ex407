@@ -1,0 +1,17 @@
+---
+  - name: Shell Examples
+    hosts: localhost
+    tasks:
+
+    - name: Check Date with Shell command
+      shell:
+         "date +'%Y-%m-%d' -d '+30 days'"
+      register: datecmd
+      tags: datecmd
+
+    - debug: msg="{{datecmd.stdout}}"
+
+    - name: "create user"
+      user:
+        name: testuser
+        expires: "{{ datecmd.strftime('%s') }}"

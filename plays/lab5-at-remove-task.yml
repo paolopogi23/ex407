@@ -1,0 +1,10 @@
+---
+- hosts: infra
+  become: no
+  tasks:
+  - name: Remove AT tasks
+    at:
+      command: df -h  > /tmp/diskspace.txt
+      state: absent
+      count: 20
+      units: minutes

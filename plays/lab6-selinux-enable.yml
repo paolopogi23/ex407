@@ -1,0 +1,8 @@
+---
+- hosts: infra
+  become: yes
+  tasks:
+  - name: check selinux and make sure to enable them
+    selinux:
+      policy: targeted
+      state: enforcing

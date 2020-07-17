@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: true
+  vars: 
+    - result: 1597487161
+  tasks:
+  - name: "create user"
+    user:
+      name: testuser
+      expires: "{{ result }}"

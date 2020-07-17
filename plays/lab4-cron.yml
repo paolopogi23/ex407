@@ -1,0 +1,13 @@
+---
+- hosts: infra
+  become: yes
+  tasks:
+  - name: create cron task
+    cron:
+      name: "cron job1"
+      user: root
+      hour: "5,17"
+      minute: "0"
+      job: "df -h >> /tmp/diskspace-{{ ansible_hostname }}.txt"
+
+ 

@@ -1,0 +1,8 @@
+Jul  8 07:53:06 juanpaolosantiago1c postfix/postfix-script[1332]: starting the Postfix mail system
+Jul  8 07:53:06 juanpaolosantiago1c postfix/master[1338]: daemon started -- version 2.10.1, configuration /etc/postfix
+Jul 10 10:38:18 juanpaolosantiago1c postfix/postfix-script[1279]: starting the Postfix mail system
+Jul 10 10:38:18 juanpaolosantiago1c postfix/master[1281]: daemon started -- version 2.10.1, configuration /etc/postfix
+Jul 10 21:32:39 juanpaolosantiago1c postfix/postfix-script[1375]: starting the Postfix mail system
+Jul 10 21:32:39 juanpaolosantiago1c postfix/master[1384]: daemon started -- version 2.10.1, configuration /etc/postfix
+Jul 12 06:21:49 juanpaolosantiago1c postfix/postfix-script[1267]: starting the Postfix mail system
+Jul 12 06:21:49 juanpaolosantiago1c postfix/master[1274]: daemon started -- version 2.10.1, configuration /etc/postfix

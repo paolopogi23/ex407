@@ -1,0 +1,9 @@
+---
+- hosts: lab
+  become: yes
+  tasks:
+  - name: Create root cronjob
+    cron:
+      name: Cron Job 1
+      minute: "0"
+      job: "date >> /var/log/time.log"

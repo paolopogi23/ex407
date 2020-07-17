@@ -1,0 +1,12 @@
+---
+- hosts: db
+  become: yes
+  tasks:
+  - name: Add Mysql Repository
+    yum_repository:
+      name: mysql56-community
+      description: 'MySQL 5.6 YUM Repo'
+      baseurl: http://repo.mysql.com/yum/mysql-5.6-community/el/7/x86_64/
+      gpgkey: http://repo.mysql.com/RPM-GPG-KEY-mysql
+      gpgcheck: yes
+      enabled: yes

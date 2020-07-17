@@ -1,0 +1,13 @@
+---
+- hosts: servers
+  become: yes
+  
+  tasks:
+  - name: Change sshd config banner
+    lineinfile: path=/etc/ssh/sshd_config line="Banner /etc/motd" mode=0644
+  - name: Change sshd config Maxauthtries
+    lineinfile: path=/etc/ssh/sshd_config line="MaxAuthTries 3" mode=0644
+  - name: Change sshd config X11Forwarding
+    lineinfile: path=/etc/ssh/sshd_config regexp="^X11Forwarding no" line="X11Forwarding yes" mode=0644 state=present
+  - name: reload sshd after config
+    service: name=sshd state=restarted

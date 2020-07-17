@@ -1,0 +1,26 @@
+---
+- name: Install Httpd
+  yum: name=httpd state=present
+  notify: restart httpd
+- name: Install mod_ssl
+  yum: name=mod_ssl state=present
+  notify: restart httpd
+- name: Install php
+  yum: name=php state=present
+  notify: restart httpd
+
+- name: Allow FW rules
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - http
+    - https
+  notify: restart fw
+
+- name: Copy template to /var/www/html
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: restart httpd

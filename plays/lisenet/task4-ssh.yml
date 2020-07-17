@@ -1,0 +1,25 @@
+---
+- hosts: servers
+  become: yes
+
+  tasks:
+  - name: Replace Banner in sshd config
+    replace:
+      path: /etc/ssh/sshd_config
+      regexp: '^#Banner none'
+      replace: 'Banner /etc/motd'
+
+  - name: Replace X11Forwarding in sshd config
+    replace:
+      path: /etc/ssh/sshd_config
+      regexp: '^#X11Forwarding no'
+      replace: 'X11Forwarding no'
+
+  - name: Replace MaxAuthTries in sshd config
+    replace:
+      path: /etc/ssh/sshd_config
+      regexp: '^#MaxAuthTries 6'
+      replace: 'MaxAuthTries 3'
+
+  - name: Reload sshd daemon to take effect 
+    service: name=sshd state=restarted enabled=yes

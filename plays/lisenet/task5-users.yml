@@ -1,0 +1,29 @@
+---
+- hosts: servers
+  become: yes
+  vars_files:
+    - /home/ansible/plays/lisenet/task5-user_list.yml
+    - /home/ansible/plays/lisenet/task5-secret.yml
+
+  tasks:
+  - name: Create users in Webservers
+    user:
+      name: "{{ item.username }}"
+      uid: "{{ item.uid }}"
+      password: "{{ user_password | password_hash('sha512') }}"
+      shell: /bin/bash
+      groups: wheel
+    with_items: "{{ users }}"
+    when: 
+      - "'web' in group_names and item.uid|string|first == '1'"
+
+  - name: Create users in DB Servers
+    user:
+      name: "{{ item.username }}"
+      uid: "{{ item.uid }}"
+      password: "{{ user_password | password_hash('sha512') }}"
+      shell: /bin/bash
+      groups: wheel
+    with_items: "{{ users }}"
+    when:
+      - "'db' in group_names and item.uid|string|first == '2'"

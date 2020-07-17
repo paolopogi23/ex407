@@ -1,0 +1,18 @@
+---
+- hosts: servers
+  become: yes
+  vars_files:
+    - /home/ansible/plays/vars/user_list.yml
+    - /home/ansible/plays/secret.yml
+ 
+ 
+  tasks:
+  - name: user creation
+    user: 
+     name: jp
+     password: "{{ user_password }}"
+    when: inventory_hostname in groups.lab
+ 
+  - debug: 
+      msg:
+      - '{{ user_password }}'

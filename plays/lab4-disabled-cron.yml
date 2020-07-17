@@ -1,0 +1,18 @@
+---
+- hosts: infra
+  become: yes
+  user: ansible
+  gather_facts: yes
+  tasks: 
+  - name: Disable cron from crontab
+    cron:
+      name: "cron job1"
+      job: "df -h >> /tmp/diskspace-{{ ansible_hostname }}.txt"
+      disabled: yes
+  
+  - name: print values
+    shell: crontab -l 
+    register: output
+
+  - debug: 
+      msg: "{{ output.stdout }}"
