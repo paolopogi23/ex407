@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+  - name: Jinja2
+    template:
+      src: templates/server_list2.j2
+      dest: /etc/server_list.txt
+      mode: 0600
+    when: inventory_hostname in groups.db
+ 
+  - name: Allow  selinux context
+    sefcontext:
+      target: '/etc/server_list.txt'
+      setype: net_conf_t
+      state: present
+    when: inventory_hostname in groups.db
+
+  - name: Apply new SELinux file context to filesystem
+    command: restorecon -R -v  /etc/server_list.txt
+    when: inventory_hostname in groups.db

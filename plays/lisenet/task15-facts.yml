@@ -1,0 +1,10 @@
+---
+- hosts: db
+  become: yes
+  tasks:
+  - name: setup module
+    setup: filter=ansible_local
+    register: output
+  - debug: 
+      msg: "{{ output }}"
+  

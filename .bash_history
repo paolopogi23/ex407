@@ -1392,3 +1392,5 @@ git status
 pwd
 cd plays/
 git branch
+git checkout .bash_history .viminfo
+git status

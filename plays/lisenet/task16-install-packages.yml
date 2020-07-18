@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Install packages web
+    yum:
+      name: [ 'mailx','tcpdump' ]
+      state: present
+    when: 
+      - "'web' in group_names"
+
+  - name: Install packages db
+    yum:
+      name: [ 'mailx','lsof' ]
+      state: present
+    when:
+      - "'db' in group_names"

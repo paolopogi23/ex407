@@ -10,5 +10,5 @@
         state: present
       when: ansible_memtotal_mb | int > 1024
     - debug:
-        msg: "Server memory less than 1024MB"
+        msg: "Server {{ ansible_hostname }} memory less than 2048MB"
       when: ansible_memtotal_mb | int < 1024

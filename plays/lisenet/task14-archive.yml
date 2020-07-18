@@ -1,0 +1,23 @@
+---
+- hosts: db
+  become: yes
+  tasks:
+  - name: Directory creation
+    file:
+      state: directory
+      name: /mnt/mysql_backups
+
+  - name: File creation
+    file: name=/mnt/mysql_backups/database_list.txt state=touch
+
+  - name: Put contents in a file
+    copy: 
+      content: 'dev,test,qa,prod'
+      dest: /mnt/mysql_backups/database_list.txt
+  
+  - name: Archive file
+    archive:
+      path: /mnt/mysql_backups/database_list.txt
+      format: gz
+      dest: /mnt/mysql_backups/archive.gz
+      
