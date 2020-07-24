@@ -1,14 +1,15 @@
 ---
-- hosts:  all
+- hosts: all
   become: yes
   tasks:
-  - name: Set swappiness to 10 if more than 2GB RAM
+  - name: Set swappiness if more than 2GB ram
     block:
     - sysctl:
         name: vm.swappiness
         value: '10'
         state: present
-      when: ansible_memtotal_mb | int > 1024
-    - debug:
-        msg: "Server {{ ansible_hostname }} memory less than 2048MB"
-      when: ansible_memtotal_mb | int < 1024
+      failed_when: ansible_memtotal_mb <= 1500
+    rescue:
+    - name: Print error
+      debug:
+        msg: "Server {{ ansible_nodename }} has less than 2048MB"
