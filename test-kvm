@@ -1,0 +1,55 @@
+testing
+
+1. define a small set of subnet in your KVM host so that you can mirror your original network when you switch the interfaces and the machine will have the correct netplan in place already on the system
+
+virsh domiflist gw-vm
+
+GW_MAC=`virsh domiflist gw-vm| grep network| awk '{print $5}'`
+HOST_ETHERNET=`nmcli d | grep ethernet| awk '{print $1}'`
+
+virsh detach-interface gw-vm --type network --mac $GW_MAC --config --persistent
+
+virsh attach-interface --domain gw-vm --type direct --source $HOST_ETHERNET --model virtio --config
+
+virsh destroy gw-vm
+
+virsh dumpxml gw-vm > gw-vm.xml
+
+sed -i 's/vepa/bridge/g' gw-vm.xml
+
+virsh undefine gw-vm
+virsh define gw-vm.xml
+virsh start gw-vm
+
+inventory example
+
+{
+  "all": {
+    "hosts": {
+      "app-vm": {
+        "ip_addr": "192.168.1.101",
+        "gateway": "192.168.1.1",
+        "name_servers": "1.1.1.1"
+      },
+      "gw-vm": {
+        "ip_addr": "192.168.1.102",
+        "gateway": "192.168.1.1",
+        "nameservers": "1.1.1.1"
+      }
+    }
+  }
+}
+
+# Configure static IP for Ubuntu 22.04 machine
+network:
+  ethernets:
+    {{ ansible_default_ipv4.interface }}:
+      addresses:
+        - {{ ip_addr }}/24
+      nameservers:
+        addresses: [{{ nameservers }}] # Populate this list with the DNS servers necessary.
+      renderer: NetworkManager
+      routes:
+        - to: default
+          via: {{ gateway }}
+  version: 2
