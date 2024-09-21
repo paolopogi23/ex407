@@ -1,6 +1,5 @@
 ---
 - hosts: servers
-  user: ansible
   become: yes
   gather_facts: yes
   tasks:
