@@ -1,0 +1,15 @@
+- name: Set the appropriate ISO file based on Ubuntu version
+  #Should be defined in defaults
+  #vm_media_2004: "GITLAB-ISO-20.04.iso"
+  #vm_media_2204: "GITLAB-ISO-22.04.iso"
+  set_fact:
+    vm_media: "{{ vm_media_2004 if ansible_facts['distribution_version'] == '20.04' else vm_media_2204 }}"
+
+- name: Debug the selected ISO file
+  debug:
+    msg: "The selected ISO file is: {{ vm_media }}"
+
+# Example task to use the selected ISO (adjust to your use case)
+- name: Mount the ISO file
+  command: "mount /path/to/{{ vm_media }} /mnt"
+  when: ansible_facts['distribution'] == 'Ubuntu'
