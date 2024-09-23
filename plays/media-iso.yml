@@ -32,3 +32,30 @@ virt-customize -d {{ inventory_hostname }} --copy-in /path/to/01-netcfg.yml:/etc
 
 # Copy logging config for all hosts
 --copy-in /path/to/logging-config.yml:/destination/path/
+
+
+#!/bin/bash
+
+# Initialize the copy command variable
+COPY_COMMAND=""
+
+# Check for Ubuntu version and hostname
+{% if inventory_hostname == 'app-vm' and ansible_facts['distribution_version'] == '20.04' %}
+    echo "Running on app-vm with Ubuntu 20.04"
+    # Copy tarball for Ubuntu 20.04
+    COPY_COMMAND="virt-customize -d app-vm --copy-in /path/to/{{ vm_media_2004 }}:/destination/path/"
+
+{% elif inventory_hostname == 'app-vm' and ansible_facts['distribution_version'] == '22.04' %}
+    echo "Running on app-vm with Ubuntu 22.04"
+    # Copy deb file for Ubuntu 22.04
+    COPY_COMMAND="virt-customize -d app-vm --copy-in /path/to/{{ vm_media_2204 }}:/destination/path/"
+
+{% else %}
+    echo "This script is only valid for app-vm running Ubuntu 20.04 or 22.04. No files will be copied."
+{% endif %}
+
+# Execute the copy command if it was set
+{% if COPY_COMMAND %}
+$COPY_COMMAND
+{% endif %}
+
