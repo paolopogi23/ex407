@@ -13,3 +13,22 @@
 - name: Mount the ISO file
   command: "mount /path/to/{{ vm_media }} /mnt"
   when: ansible_facts['distribution'] == 'Ubuntu'
+
+
+Test Jinja
+
+#!/bin/bash
+
+# Copy netplan config for all hosts
+virt-customize -d {{ inventory_hostname }} --copy-in /path/to/01-netcfg.yml:/etc/netplan/ \
+
+{% if ansible_facts['distribution_version'] == '22.04' %}
+    # Copy deb file for Ubuntu 22.04
+    --copy-in /path/to/{{ vm_media_2204 }}:/destination/path/ \
+{% elif ansible_facts['distribution_version'] == '20.04' %}
+    # Copy tar file for Ubuntu 20.04
+    --copy-in /path/to/{{ vm_media_2004 }}:/destination/path/ \
+{% endif %}
+
+# Copy logging config for all hosts
+--copy-in /path/to/logging-config.yml:/destination/path/
