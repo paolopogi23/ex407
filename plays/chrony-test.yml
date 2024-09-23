@@ -1,0 +1,24 @@
+- name: Define the version-specific details
+  set_fact:
+    chrony_file: "{{ 'chrony_20.04.tar.gz' if ansible_facts['distribution_version'] == '20.04' else 'chrony_22.04.deb' }}"
+    chrony_file_type: "{{ 'tar' if ansible_facts['distribution_version'] == '20.04' else 'deb' }}"
+
+- name: Debug the chrony file and type
+  debug:
+    msg:
+      - "The chrony file is: {{ chrony_file }}"
+      - "The file type is: {{ chrony_file_type }}"
+
+# Task to handle tarball installation (for Ubuntu 20.04)
+- name: Extract chrony tarball for Ubuntu 20.04
+  ansible.builtin.unarchive:
+    src: "/path/to/{{ chrony_file }}"
+    dest: /usr/local/bin/
+    remote_src: yes
+  when: chrony_file_type == 'tar'
+
+# Task to handle deb package installation (for Ubuntu 22.04)
+- name: Install chrony deb file for Ubuntu 22.04
+  apt:
+    deb: "/path/to/{{ chrony_file }}"
+  when: chrony_file_type == 'deb'
