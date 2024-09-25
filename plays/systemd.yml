@@ -1,0 +1,113 @@
+root@ubuntu20-original:/home/juan# cat /usr/local/bin/
+ip-config                 menu.sh                   run_ansible_container.sh
+root@ubuntu20-original:/home/juan# cat /usr/local/bin/run_ansible_container.sh
+#!/bin/bash
+
+# Set container name
+CONTAINER_NAME="ansible_playbook_container"
+
+# Docker image that has Ansible installed
+DOCKER_IMAGE="willhallonline/ansible:latest"  # Replace with your actual Ansible Docker image
+
+# Path to the Ansible playbook on the host system
+PLAYBOOK_PATH="/home/juan"  # Adjust the path as needed
+
+# Run the Docker container with the playbook
+#docker run --rm --name $CONTAINER_NAME -v $PLAYBOOK_PATH:/playbook.yml $DOCKER_IMAGE ansible-playbook /playbook.yml &
+#docker run --tty -v $PLAYBOOK_PATH:/ansible $DOCKER_IMAGE ansible-playbook playbook.yml
+
+# Run the Docker container (remove --rm flag to keep container for inspection)
+
+first_run() {
+docker run --tty --name $CONTAINER_NAME -v $PLAYBOOK_PATH:/ansible $DOCKER_IMAGE ansible-playbook playbook.yml
+
+# Wait for the container to finish
+docker wait $CONTAINER_NAME
+
+# Get the exit status of the container
+EXIT_CODE=$(docker inspect $CONTAINER_NAME --format='{{.State.ExitCode}}')
+
+# Remove the container manually after we get the exit code
+docker rm $CONTAINER_NAME
+
+# Wait for the container to finish and capture its exit code
+
+# Inspect the exit code of the finished container
+
+# Log the success or failure
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "Ansible playbook executed successfully."
+else
+    echo "Ansible playbook failed with exit code $EXIT_CODE."
+    exit $EXIT_CODE
+fi
+}
+
+second_run() {
+docker run --tty --name $CONTAINER_NAME -v $PLAYBOOK_PATH:/ansible $DOCKER_IMAGE ansible-playbook playbook-2.yml
+
+docker wait $CONTAINER_NAME
+
+EXIT_CODE=$(docker inspect $CONTAINER_NAME --format='{{.State.ExitCode}}')
+
+docker rm $CONTAINER_NAME
+
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "Ansible playbook executed successfully."
+else
+    echo "Ansible playbook failed with exit code $EXIT_CODE."
+    exit $EXIT_CODE
+fi
+}
+
+#MAIN
+second_run
+first_run
+
+
+root@ubuntu20-original:/home/juan# cat playbook.yml
+- name: Fail to create a file
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: Try to create a file in a restricted directory
+      shell: |
+        cat hehe.txt
+
+
+root@ubuntu20-original:/home/juan# cat playbook-2.yml
+---
+- name: Simple Test Playbook
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: Create a test file
+      file:
+        path: /tmp/ansible_test_file.txt
+        state: touch
+    - name: Print a success message
+      debug:
+        msg: "Test playbook ran successfully!"
+
+
+root@ubuntu20-original:/home/juan# vi /etc/systemd/system/ansible_playbook.service
+
+
+
+[Unit]
+Description=Run Docker container with Ansible playbook
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/run_ansible_container.sh
+Restart=no
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ansible_playbook_service
+
+[Install]
+WantedBy=multi-user.target
+
+
