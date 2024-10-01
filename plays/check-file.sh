@@ -8,6 +8,10 @@ if [ -f "$config_file" ] && docker_inv_value=$(grep -m 1 "^docker_inv=" "$config
     echo "docker_inv is set to: $docker_inv_value"
 else
     echo "Either the file does not exist, docker_inv is not defined, or it has no value."
+    echo "=============================="
+    echo
+    echo "see output below of $config_file"
+    cat $config_file
 fi
 
 ==================================
