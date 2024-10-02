@@ -1,28 +1,35 @@
 #!/usr/bin/env python3
 
-import psutil
 import socket
+import netifaces
+import psutil
 from pyhocon import ConfigFactory, HOCONConverter
 import os
 
 # Get the hostname
 hostname = socket.gethostname()
 
-# Get network interfaces and their status
-net_if_addrs = psutil.net_if_addrs()
-net_if_stats = psutil.net_if_stats()
+# Check if an interface is up using psutil
+def is_interface_up(interface):
+    stats = psutil.net_if_stats()
+    return stats.get(interface, None) and stats[interface].isup
 
-# Find the first Ethernet interface that is up (and not loopback)
-ip_address = "unknown"
-for interface, addrs in net_if_addrs.items():
-    # Skip loopback interfaces and check if the interface is up
-    if net_if_stats[interface].isup and not interface.startswith("lo"):
-        for addr in addrs:
-            if addr.family == 2:  # AF_INET (IPv4)
-                ip_address = addr.address
-                break
-    if ip_address != "unknown":
-        break
+# Use netifaces to get the IP address of the first active Ethernet interface
+def get_ip_address():
+    for interface in netifaces.interfaces():
+        # Only consider interfaces that start with 'en' or 'eth' and are up
+        if (interface.startswith('en') or interface.startswith('eth')) and is_interface_up(interface):
+            addrs = netifaces.ifaddresses(interface)
+
+            # Check if the interface has an IPv4 address
+            if netifaces.AF_INET in addrs:
+                # Get the IPv4 address (first one)
+                ip_address = addrs[netifaces.AF_INET][0]['addr']
+                return ip_address
+    return "unknown"
+
+# Get the IP address
+ip_address = get_ip_address()
 
 # Prepare the HOCON configuration
 config_dict = {
