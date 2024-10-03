@@ -4,15 +4,6 @@ import json
 import sys
 import argparse
 
-def load_config(config_file):
-    config = {}
-    with open(config_file) as f:
-        for line in f:
-            if '=' in line:
-                key, value = line.strip().split('=', 1)
-                config[key] = value
-    return config
-
 def get_inventory(subnet, subsystem_id):
     return {
         "all": {
@@ -50,27 +41,21 @@ def get_host_vars(hostname, subnet, subsystem_id):
     return hosts.get(hostname, {})
 
 def main():
-    # Load the configuration from source.conf
-    config_file = 'source.conf'
-    config = load_config(config_file)
-
-    # Extract the subnet and subsystem_id from the config
-    subnet = config.get('subnet', '192.168.1')
-    subsystem_id = config.get('subsystem_id', 'unknown')
+    # Default values for subnet and subsystem_id
+    default_subnet = '192.168.1'
+    default_subsystem_id = 'h1-1000'
 
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Ansible dynamic inventory script.")
     parser.add_argument('--list', action='store_true', help="List inventory")
     parser.add_argument('--host', help="Get all the variables about a specific host")
-    parser.add_argument('--subnet', help="Override the subnet")  # Add subnet argument
-    parser.add_argument('--subsystem_id', help="Override the subsystem_id")  # Add subsystem_id argument
+    parser.add_argument('--subnet', help="Override the subnet", default=default_subnet)  # Default is '192.168.1'
+    parser.add_argument('--subsystem_id', help="Override the subsystem_id", default=default_subsystem_id)  # Default is 'unknown'
     args = parser.parse_args()
 
-    # Override with command line args if provided
-    if args.subnet:
-        subnet = args.subnet
-    if args.subsystem_id:
-        subsystem_id = args.subsystem_id
+    # Use command line args or defaults
+    subnet = args.subnet
+    subsystem_id = args.subsystem_id
 
     if args.list:
         inventory = get_inventory(subnet, subsystem_id)
