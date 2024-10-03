@@ -1,26 +1,52 @@
 #!/usr/bin/env python3
 
+import json
 import sys
+import argparse
 import os
 
-# Get the subnet and subsystem_id from environment variables or command line
-subnet = os.getenv('subnet', "192.168.1")
-subsystem_id = os.getenv('subsystem_id', "h1-77")
+def get_inventory(subnet):
+    return {
+        "all": {
+            "hosts": {
+                "host1": {
+                    "ansible_host": f"{subnet}.200",
+                    "subsystem_id": "h1-test"
+                },
+                "host2": {
+                    "ansible_host": f"{subnet}.151"
+                },
+                "host3": {
+                    "ansible_host": f"{subnet}.152"
+                }
+            }
+        }
+    }
 
-# Define the VM names and their corresponding last octets
-vms = {
-    "provisioning-vm": 150,
-    "gw-vm": 151,
-    "scanner-vm": 152,
-    "application-vm": 153
-}
+def get_host_vars(hostname, subnet):
+    hosts = get_inventory(subnet)["all"]["hosts"]
+    return hosts.get(hostname, {})
 
-# Print the inventory in INI format
-for vm, last_octet in vms.items():
-    ip_address = f"{subnet}.{last_octet}"
-    print(f"[{vm}]")
-    print(f"{vm} ansible_host={ip_address}")
+def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Ansible dynamic inventory script.")
+    parser.add_argument('--list', action='store_true', help="List inventory")
+    parser.add_argument('--host', help="Get all the variables about a specific host")
+    parser.add_argument('--subnet', help="Subnet to use for the hosts")
+    args = parser.parse_args()
 
-# Print the vars section
-print("\n[vars]")
-print(f"subsystem_id={subsystem_id}")
+    # Check for subnet from environment variable, command-line args, or default
+    subnet = args.subnet or os.environ.get('INVENTORY_SUBNET', '192.168.1')
+
+    if args.list:
+        inventory = get_inventory(subnet)
+        print(json.dumps(inventory, indent=2))
+    elif args.host:
+        host_vars = get_host_vars(args.host, subnet)
+        print(json.dumps(host_vars, indent=2))
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
