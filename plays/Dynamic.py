@@ -8,23 +8,27 @@ def get_inventory(subnet, subsystem_id):
     return {
         "all": {
             "hosts": {
-                "host1": {
+                "provisioning-vm": {
                     "ansible_host": f"{subnet}.150",
+                    "subsystem_id": subsystem_id
+                },
+                "application-vm": {
+                    "ansible_host": f"{subnet}.151",
                     "subsystem_id": subsystem_id,
                     "cpu": 6,
                     "memory": "16GB",
                     "interface_ip": f"{subnet}.150",  # sourced from ansible_host
                     "interface_gw": f"{subnet}.1"
                 },
-                "host2": {
-                    "ansible_host": f"{subnet}.151",
+                "gateway-vm": {
+                    "ansible_host": f"{subnet}.153",
                     "subsystem_id": subsystem_id,
                     "cpu": 4,
                     "memory": "8GB",
-                    "interface_ip": f"{subnet}.151",  # sourced from ansible_host
+                    "interface_ip": f"{subnet}.153",  # sourced from ansible_host
                     "interface_gw": f"{subnet}.1"
                 },
-                "host3": {
+                "scanner-vm": {
                     "ansible_host": f"{subnet}.152",
                     "subsystem_id": subsystem_id,
                     "cpu": 4,
