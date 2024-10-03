@@ -3,7 +3,6 @@
 import json
 import sys
 import argparse
-import os
 
 def load_config(config_file):
     config = {}
@@ -20,13 +19,27 @@ def get_inventory(subnet, subsystem_id):
             "hosts": {
                 "host1": {
                     "ansible_host": f"{subnet}.150",
-                    "subsystem_id": subsystem_id  # Use the variable here
+                    "subsystem_id": subsystem_id,
+                    "cpu": 6,
+                    "memory": "16GB",
+                    "interface_ip": f"{subnet}.150",  # sourced from ansible_host
+                    "interface_gw": f"{subnet}.1"
                 },
                 "host2": {
-                    "ansible_host": f"{subnet}.151"
+                    "ansible_host": f"{subnet}.151",
+                    "subsystem_id": subsystem_id,
+                    "cpu": 4,
+                    "memory": "8GB",
+                    "interface_ip": f"{subnet}.151",  # sourced from ansible_host
+                    "interface_gw": f"{subnet}.1"
                 },
                 "host3": {
-                    "ansible_host": f"{subnet}.152"
+                    "ansible_host": f"{subnet}.152",
+                    "subsystem_id": subsystem_id,
+                    "cpu": 4,
+                    "memory": "8GB",
+                    "interface_ip": f"{subnet}.152",  # sourced from ansible_host
+                    "interface_gw": f"{subnet}.1"
                 }
             }
         }
