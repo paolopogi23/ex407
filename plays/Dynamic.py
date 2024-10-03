@@ -28,6 +28,7 @@ def get_inventory(subnet, subnet_mask, subsystem_id):
                     "subsystem_id": subsystem_id,
                     "cpu": 6,
                     "memory": "16GB",
+                    "disk": "150GB",  # Disk size for application-vm
                     "interface_ip": f"{subnet_base}.150",  # sourced from ansible_host
                     "interface_gw": f"{subnet_base}.1",
                     "interface_mask": str(subnet_mask)  # Add mask from validated subnet
@@ -37,6 +38,7 @@ def get_inventory(subnet, subnet_mask, subsystem_id):
                     "subsystem_id": subsystem_id,
                     "cpu": 4,
                     "memory": "8GB",
+                    "disk": "100GB",  # Disk size for gateway-vm
                     "interface_ip": f"{subnet_base}.151",  # sourced from ansible_host
                     "interface_gw": f"{subnet_base}.1",
                     "interface_mask": str(subnet_mask)  # Add mask from validated subnet
@@ -46,6 +48,7 @@ def get_inventory(subnet, subnet_mask, subsystem_id):
                     "subsystem_id": subsystem_id,
                     "cpu": 4,
                     "memory": "8GB",
+                    "disk": "90GB",  # Disk size for scanner-vm
                     "interface_ip": f"{subnet_base}.152",  # sourced from ansible_host
                     "interface_gw": f"{subnet_base}.1",
                     "interface_mask": str(subnet_mask)  # Add mask from validated subnet
@@ -61,7 +64,7 @@ def get_host_vars(hostname, subnet, subnet_mask, subsystem_id):
 def main():
     # Default values for subnet and subsystem_id
     default_subnet = '192.168.1.0/24'
-    default_subsystem_id = 'h1-1000'
+    default_subsystem_id = 'unknown'
 
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Ansible dynamic inventory script.")
