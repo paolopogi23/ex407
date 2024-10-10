@@ -4,7 +4,8 @@ from ssdp import SSDPClient
 
 def discover_servers():
     client = SSDPClient()
-    devices = client.discover()
+    # Discover devices using the SSDP client
+    devices = client.search("ssdp:all")  # This searches for all SSDP devices
     return devices
 
 def change_ip(server_url, new_ip):
