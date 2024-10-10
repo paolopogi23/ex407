@@ -1,11 +1,9 @@
-import json
+from ssdpy import SSDPClient
 import requests
-from ssdp import SSDPClient
 
-def discover_servers():
+def discover_servers(service_type="urn:schemas-upnp-org:service:IPConfig:1", timeout=5):
     client = SSDPClient()
-    # Discover devices using the SSDP client
-    devices = client.search("ssdp:all")  # This searches for all SSDP devices
+    devices = client.search(service_type, timeout=timeout)
     return devices
 
 def change_ip(server_url, new_ip):
@@ -14,7 +12,7 @@ def change_ip(server_url, new_ip):
         if response.status_code == 200:
             print(f"Successfully changed IP to: {response.json()['new_ip']}")
         else:
-            print(f"Error: {response.json()['error']}")
+            print(f"Error: {response.json().get('error', 'Unknown error')}")
     except requests.exceptions.RequestException as e:
         print(f"Failed to connect to the server: {e}")
 
@@ -31,8 +29,10 @@ if __name__ == '__main__':
         server_device = discovered_devices[0]
         server_url = f"http://{server_device.address}:5000/change-ip"
 
-        # Change the IP address
-        new_ip = "192.168.1.20"  # Desired new IP address
+        # Desired new IP address
+        new_ip = "192.168.1.20"  # Replace with your desired IP
+
+        print(f"Sending IP change request to: {server_url}")
         change_ip(server_url, new_ip)
     else:
         print("No SSDP servers found.")
