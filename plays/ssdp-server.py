@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from ssdp import SSDPServer
+from ssdpy import SSDPServer
 import threading
 
 app = Flask(__name__)
@@ -23,9 +23,11 @@ def change_ip():
     return jsonify({"message": "IP address updated successfully.", "new_ip": current_ip}), 200
 
 def start_ssdp_server():
-    server = SSDPServer()
+    # Set the USN and other parameters
+    usn = "uuid:12345678-1234-5678-1234-567812345678::my_service"
+    server = SSDPServer(usn, "my_service", "urn:my_service", "My SSDP Service")
     server.start()
-    server.announce("http://192.168.1.10:5000/change-ip", "ssdp:service:my_service", "urn:my_service", "My SSDP Service")
+    server.announce(f"http://{current_ip}:5000/change-ip", "ssdp:service:my_service", "urn:my_service")
 
 if __name__ == '__main__':
     # Start the SSDP server in a separate thread
