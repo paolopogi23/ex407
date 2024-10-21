@@ -1,0 +1,87 @@
+param(
+    [string]$InterfaceName = 'Ethernet',         # Default network interface name
+    [string]$IPAddress = '192.168.1.152',        # Default IP address
+    [int]$PrefixLength = 24,                     # Default subnet mask (prefix length)
+    [string]$DefaultGateway = '192.168.1.1',     # Default gateway
+    [string[]]$DnsServers = @('8.8.8.8', '8.8.4.4') # Default DNS servers
+)
+
+# Get the network interface
+$interface = Get-NetAdapter | Where-Object { $_.Name -eq $InterfaceName }
+
+# Remove all existing IP addresses and gateways
+Get-NetIPAddress -InterfaceIndex $interface.ifIndex -AddressFamily IPv4 | Remove-NetIPAddress -Confirm:$false
+Get-NetIPConfiguration -InterfaceIndex $interface.ifIndex | ForEach-Object { Remove-NetRoute -InterfaceIndex $interface.ifIndex -Confirm:$false }
+
+# Set the new IP address, subnet mask, and gateway
+New-NetIPAddress -InterfaceIndex $interface.ifIndex -IPAddress $IPAddress -PrefixLength $PrefixLength -DefaultGateway $DefaultGateway
+
+# Set the DNS servers
+Set-DnsClientServerAddress -InterfaceIndex $interface.ifIndex -ServerAddresses $DnsServers
+
+
+virt-customize -a your-image.qcow2 \
+  --run-command 'powershell -Command "Start-Process powershell -ArgumentList \'-ExecutionPolicy Bypass -File C:\Scripts\setup_network.ps1\' -Verb RunAs; Shutdown -r -t 0"'
+========================================================================================
+
+---
+- name: Change IP address on Windows machine
+  hosts: windows
+  gather_facts: no
+  vars:
+    interface_name: 'Ethernet'             # Default network interface name
+    new_ip_address: '192.168.1.150'        # New IP address to set
+    old_ip_address: '192.168.1.153'        # Current default IP address
+    prefix_length: 24                       # Default subnet mask (prefix length)
+    default_gateway: '192.168.1.1'         # Default gateway
+    dns_servers:                            # Default DNS servers
+      - '8.8.8.8'
+      - '8.8.4.4'
+
+  tasks:
+    - name: Change IP address
+      win_shell: |
+        param(
+            [string]$InterfaceName = '{{ interface_name }}',
+            [string]$IPAddress = '{{ new_ip_address }}',
+            [int]$PrefixLength = {{ prefix_length }},
+            [string]$DefaultGateway = '{{ default_gateway }}',
+            [string[]]$DnsServers = @('{{ dns_servers | join("','") }}')
+        )
+        # Get the network interface
+        $interface = Get-NetAdapter | Where-Object { $_.Name -eq $InterfaceName }
+
+        # Remove all existing IP addresses and gateways
+        Get-NetIPAddress -InterfaceIndex $interface.ifIndex -AddressFamily IPv4 | Remove-NetIPAddress -Confirm:$false
+        Get-NetIPConfiguration -InterfaceIndex $interface.ifIndex | ForEach-Object { Remove-NetRoute -InterfaceIndex $interface.ifIndex -Confirm:$false }
+
+        # Set the new IP address, subnet mask, and gateway
+        New-NetIPAddress -InterfaceIndex $interface.ifIndex -IPAddress $IPAddress -PrefixLength $PrefixLength -DefaultGateway $DefaultGateway
+
+        # Set the DNS servers
+        Set-DnsClientServerAddress -InterfaceIndex $interface.ifIndex -ServerAddresses $DnsServers
+        
+        # Wait for a few seconds to allow the network stack to refresh
+        Start-Sleep -Seconds 10
+
+    - name: Wait for the new IP to be reachable
+      wait_for:
+        host: "{{ new_ip_address }}"           # Use the new IP address
+        port: 5986                              # Default WinRM port for HTTPS
+        timeout: 30                             # Timeout for waiting
+        state: started
+
+    - name: Update inventory with the new IP address
+      add_host:
+        name: "{{ new_ip_address }}"
+        ansible_host: "{{ new_ip_address }}"
+        old_ip: "{{ old_ip_address }}"
+
+    - name: Verify new IP configuration
+      win_shell: |
+        Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -eq '{{ new_ip_address }}' }
+      register: ip_check
+
+    - name: Display new IP configuration
+      debug:
+        var: ip_check.stdout_lines
