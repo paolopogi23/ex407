@@ -34,6 +34,7 @@ main.yml
   template:
     src: setup_network.ps1.j2
     dest: C:\tmp\setup_network.ps1
+  register: win_powershell
 
 - name: Execute the PowerShell script to configure the network
   win_shell: |
@@ -41,10 +42,12 @@ main.yml
   async: 100
   poll: 0
   ignore_errors: yes
+  when: win_powershell.changed
 
 - name: Set fact for the new IP address
   set_fact:
     ansible_host: "{{ new_ip_address }}"
+  when: win_powershell.changed
 
 - name: Wait for the hosts network interface to come back up
   local_action:
@@ -53,20 +56,22 @@ main.yml
     port: 5985
     delay: 10
     state: started
-  register: wait_result
+  when: win_powershell.changed
 
 - name: Display the new IP address
   debug:
     msg: "New IP address added: {{ new_ip_address }}"
+  when: win_powershell.changed
 
 - name: Create a test folder to celebrate success
   win_file:
     path: C:\itworks
     state: directory
+  when: win_powershell.changed
+
 
 ====================================================
 defaults
-
 ---
 # Default variables for network configuration
 interface_name_pattern: '*Ethernet*'  # Pattern to match the network interface name
