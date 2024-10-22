@@ -2,6 +2,30 @@ docker run -it  -v /opt/system-deployment:/opt/ --name testwin --env-file=/opt/s
 --entrypoint bash gitlabci-ansible:2.4.6 -c 'source /opt/.auto && cd /opt && ansible-playbook playbooks/configure-vms.yml -i inventory/offline-staging/hosts \
 -e "interface_name_pattern='*Ethernet*' new_ip_address='192.168.1.160' prefix_length=24 gateway='192.168.1.1' dns_servers=['8.8.8.8','8.8.4.4']"'
 
+or
+
+docker run -it  -v /opt/system-deployment:/opt/ --name testwin --env-file=/opt/system-deployment/.auto --network="macvlan_pub_net" --ip 192.168.1.157 \
+--entrypoint bash gitlabci-ansible:2.4.6 -c 'source /opt/.auto && cd /opt && ansible-playbook playbooks/configure-vms.yml -i inventory/offline-staging/hosts'
+
+---
+- hosts: scanner-vm
+  gather_facts: yes
+  vars_files:
+    passwords.yml
+  vars:
+    default_ip_address: '192.168.1.151'  # Default IP address for the scanner-vm
+    new_ip_address: '192.168.1.190'
+    interface_name_pattern: '*Ethernet*'
+    prefix_length: 24
+    gateway: '192.168.1.1'
+    dns_servers:
+      - 1.1.1.1
+      - 192.168.1.1
+  roles:
+    - set_ip_windows
+  tags:
+    - configure_scanner_vm
+
 ==================================
 templates
 
