@@ -23,6 +23,37 @@ Set-DnsClientServerAddress -InterfaceIndex $interface.ifIndex -ServerAddresses $
 virt-customize -a your-image.qcow2 \
   --run-command 'powershell -Command "Start-Process powershell -ArgumentList \'-ExecutionPolicy Bypass -File C:\Scripts\setup_network.ps1\' -Verb RunAs; Shutdown -r -t 0"'
 ========================================================================================
+script two:
+
+# Define parameters for the new IP configuration
+$interfaceNamePattern = '*Ethernet*' # Wildcard pattern to match interface names
+$newIPAddress = '192.168.1.150'      # New IP address to assign
+$prefixLength = 24                   # Subnet mask as prefix length (e.g., 24 for 255.255.255.0)
+$defaultGateway = '192.168.1.1'      # Default gateway
+$dnsServers = @('8.8.8.8', '8.8.4.4') # DNS servers
+
+# Get the network interface by using a wildcard for the interface name
+$interface = Get-NetAdapter | Where-Object { $_.Name -like $interfaceNamePattern }
+
+if ($interface) {
+    # Remove all existing IP addresses
+    Get-NetIPAddress -InterfaceIndex $interface.ifIndex -AddressFamily IPv4 | Remove-NetIPAddress -Confirm:$false
+    
+    # Remove existing routes
+    Get-NetIPConfiguration -InterfaceIndex $interface.ifIndex | ForEach-Object { Remove-NetRoute -InterfaceIndex $interface.ifIndex -Confirm:$false }
+    
+    # Set the new IP address, subnet mask, and gateway
+    New-NetIPAddress -InterfaceIndex $interface.ifIndex -IPAddress $newIPAddress -PrefixLength $prefixLength -DefaultGateway $defaultGateway
+    
+    # Set the DNS servers
+    Set-DnsClientServerAddress -InterfaceIndex $interface.ifIndex -ServerAddresses $dnsServers
+    
+    Write-Host "IP address has been successfully updated."
+} else {
+    Write-Host "No network interface found with the name pattern '$interfaceNamePattern'."
+}
+
+========================================================================================
 
 ---
 - name: Change IP address on Windows machine
