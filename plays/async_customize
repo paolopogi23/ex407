@@ -1,0 +1,102 @@
+- name: Virt Customize Block task - Setting up Temporary Netplan and Copying install files for VMs
+  when: customize_template.changed
+  delegate_to: provisioning-host
+  block:
+    - name: Shutdown VMs
+      shell: |
+        set -e
+        virsh destroy {{ inventory_hostname }}
+      ignore_errors: yes
+
+    - name: Include task for Passing NUC serial numbers to VMS
+      include_tasks: create_product_serial.yml
+
+    - name: Trigger Update via virt-customize
+      shell: |
+        set -ex
+        virt-customize -d {{ inventory_hostname }} --delete {{ installer_netplan_delete }} \
+        --copy-in {{ deploy_dir }}/generate/00-temp-netplan-{{ inventory_hostname }}.yaml:/etc/netplan \
+        --copy-in {{ deploy_dir }}/generate/nuc-serial-{{ inventory_hostname }}.conf:/opt/config/identity.d \
+        #--copy-in {{ installer_folder }}/{{ setup_logging_deb_file }}:/home/installer \
+        #{% if inventory_hostname == 'application-vm' -%} --copy-in {{ installer_folder }}/{{ chrony_tar_file }}:/home/installer \ {%- endif %}
+        --firstboot-command 'ssh-keygen -A' --firstboot-command 'touch /etc/cloud/cloud-init.disabled'
+
+    - name: Start VMs
+      shell: |
+        set -e
+        virsh start {{ inventory_hostname }}
+
+- name: Sleep for 30 seconds and continue with play
+  ansible.builtin.wait_for:
+    timeout: 30
+  delegate_to: localhost
+
+
+=======================================================================
+create_product_serial.yml
+
+- name: Get the  NUC serial number
+  command: dmidecode -s system-serial-number
+  register: serial_output
+  delegate_to: provisioning-host
+
+- name: Set NUC serial number as a fact
+  set_fact:
+    nuc_host_serial: "{{ serial_output.stdout }}"
+  delegate_to: provisioning-host
+
+- name: "Create NUC host serial number and pass to VM {{ inventory_hostname }}"
+  copy:
+    content: |
+      host {
+          host_serial: {{ nuc_host_serial }}
+      }
+    dest: "/opt/generate/nuc-serial-{{ inventory_hostname }}.conf"
+    mode: '0644'
+  when: serial_output.changed
+  delegate_to: provisioning-host
+
+=======================================================================
+
+set_ip_network tasks
+
+- name: Copy the NUC serial to /opt/generate/product-type.conf
+  ansible.builtin.copy:
+    src: "/opt/config/identity.d/nuc-serial-{{ inventory_hostname }}.conf"
+    dest: /opt/config/identity.d/product-type.conf
+    remote_src: yes
+  ignore_errors: true
+
+- name: "Remove the old file /opt/generate/nuc-serial-{{ inventory_hostname }}.conf"
+  ansible.builtin.file:
+    path: "/opt/config/identity.d/nuc-serial-{{ inventory_hostname }}.conf"
+    state: absent
+  ignore_errors: true
+
+- name: Disable checksum offloading - ( Only provisioning Host )
+  when: "'provisioning-host' in inventory_hostname"
+  block:
+    - name: create NetworkManager dispatcher script - for provisioning-host tasks only
+      register: offload_sh
+      template:
+        src: templates/10-offload.sh.j2
+        dest: /etc/NetworkManager/dispatcher.d/10-offload.sh
+        owner: root
+        group: root
+        mode: '755'
+    - name: apply the script - for provisioning-host tasks only
+      when: offload_sh.changed
+      command: /etc/NetworkManager/dispatcher.d/10-offload.sh {{ ansible_default_ipv4.interface | default('eno1') }} up
+
+- name: "AFTER_IP_CHANGE: Wait for port 22 to become open and contain OpenSSH"
+  ansible.builtin.wait_for:
+    port: 22
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    search_regex: OpenSSH
+    delay: 10
+    timeout: 300
+  connection: local
+
+
+
+
