@@ -1,5 +1,5 @@
 ---
-- name: Wait for SSH to be available on 192.168.1.212
+- name: NUC Validate SSH connection
   hosts: localhost
   gather_facts: no
   tasks:
@@ -35,4 +35,4 @@
 
     - name: Display disk usage output
       debug:
-        var: disk_usage.stdout
+        var: disk_usage.stdout_lines
