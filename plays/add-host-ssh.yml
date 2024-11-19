@@ -1,0 +1,37 @@
+---
+- name: Wait for SSH to be available on 192.168.1.212
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Attempt SSH connection
+      ansible.builtin.wait_for:
+        host: 192.168.1.212
+        port: 22
+        timeout: 10
+        state: started
+      register: wait_result
+      until: wait_result.elapsed < 10
+      retries: 10
+      delay: 5
+      failed_when: wait_result.failed
+      ignore_errors: true
+
+    - name: Add the host to inventory
+      ansible.builtin.add_host:
+        name: 192.168.1.212
+        groups: dynamic_hosts
+        ansible_user: sysadm
+        ansible_ssh_private_key_file: sysadm-private-key
+        ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+- name: Display disk usage on the newly added host
+  hosts: dynamic_hosts
+  gather_facts: no
+  tasks:
+    - name: Show disk usage
+      shell: df -h
+      register: disk_usage
+
+    - name: Display disk usage output
+      debug:
+        var: disk_usage.stdout_lines
