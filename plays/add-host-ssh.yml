@@ -16,13 +16,14 @@
       failed_when: wait_result.failed
       ignore_errors: true
 
-    - name: Add the host to inventory
+    - name: Add the host to inventory if SSH connection succeeded
       ansible.builtin.add_host:
         name: 192.168.1.212
         groups: dynamic_hosts
         ansible_user: sysadm
         ansible_ssh_private_key_file: sysadm-private-key
         ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+      when: not wait_result.failed
 
 - name: Display disk usage on the newly added host
   hosts: dynamic_hosts
@@ -34,4 +35,4 @@
 
     - name: Display disk usage output
       debug:
-        var: disk_usage.stdout_lines
+        var: disk_usage.stdout
