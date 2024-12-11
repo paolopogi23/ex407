@@ -4,6 +4,7 @@
 MOUNT_POINT="/mnt/temp"
 TARGET_DIR="/opt/transfer"
 FILE_PATTERN="system-deployment*.deb"
+FILE_FOUND=0  # Flag to track if the file is found
 
 # Create the mount point if it doesn't exist
 mkdir -p "$MOUNT_POINT"
@@ -22,13 +23,14 @@ process_partition() {
         if ls "$MOUNT_POINT/$FILE_PATTERN" 1> /dev/null 2>&1; then
             echo "File matching $FILE_PATTERN found on $partition"
             
-            # Perform rsync
-            rsync -av "$MOUNT_POINT/" "$TARGET_DIR/"
-            echo "Files synced from $partition to $TARGET_DIR"
+            # Perform rsync: Copy all files flat to /opt/transfer
+            rsync -av "$MOUNT_POINT/"* "$TARGET_DIR/"
+            echo "Files synced flat from $partition to $TARGET_DIR"
 
             # Unmount the partition and stop further processing
             umount "$MOUNT_POINT"
             echo "Unmounted $partition. Stopping further checks."
+            FILE_FOUND=1  # Update flag to indicate success
             return 0
         else
             echo "No file matching $FILE_PATTERN found on $partition"
