@@ -52,7 +52,15 @@ fi
 
 # Clean up the mount point
 rmdir "$MOUNT_POINT" 2>/dev/null
-echo "Script finished"
+
+# Exit with status 1 if the file was not found
+if [ "$FILE_FOUND" -eq 0 ]; then
+    echo "File not found on any partition. Exiting with status 1."
+    exit 1
+fi
+
+echo "Script finished successfully."
+exit 0
 
 ==============================================
 
