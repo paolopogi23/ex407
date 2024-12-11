@@ -54,16 +54,6 @@ fi
 rmdir "$MOUNT_POINT" 2>/dev/null
 echo "Script finished"
 
-
-# Process /dev/sda3
-process_partition "/dev/sda3"
-
-# Process /dev/sdb3
-process_partition "/dev/sdb3"
-
-# Clean up the mount point
-rmdir "$MOUNT_POINT" 2>/dev/null
-echo "Script finished"
 ==============================================
 
 
